@@ -1,0 +1,24 @@
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-top: 10vh;
+}
+.left {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left form {
+    display: flex;
+    flex-direction: column;
+}
+.left form input {
+    margin-top: 1vh;
+}
+.right {
+    height: 100%;
+    width: 50%;
+}

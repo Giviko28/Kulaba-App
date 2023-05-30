@@ -1,0 +1,91 @@
+body {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F7F7;
+    padding-top: 10vh;
+    box-sizing: border-box;
+}
+
+nav {
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+.wrapper {
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #741FA2;
+}
+.wrapper h1 a {
+    color: white;
+    position: relative;
+    left: 0;
+    text-decoration: none;
+}
+.wrapper ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper ul li a {
+    padding-right: 15px;
+    color: white;
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+.wrapper ul li a:hover {
+    font-size: 18px;
+}
+footer {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.sign-up{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.sign-up form {
+    display: flex;
+    flex-direction: column;
+}
+.sign-up form input {
+    margin-top: 5px;
+}
+.sign-up form button {
+    margin-top: 5px;
+}
+.successWrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.misha {
+    max-height: 75vh;
+    max-width: 75vh;
+}   
+@media screen and (max-width:500px){
+    .wrapper ul {
+        display: none;
+    }
+}

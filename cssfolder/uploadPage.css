@@ -1,0 +1,168 @@
+  .items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2vh;
+  }
+  .items form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .uploadBtn {
+    padding: 10px;
+    background-color: white;
+    border-style:double;
+    border-color: #741FA2;
+    background-color: #741FA2;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    transition-duration: 0.4s;
+  }
+  .uploadBtn:hover{
+    background-color: white;
+    color: #741FA2;
+    cursor: pointer;
+  }
+  .myitems {
+    height: 75vh;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    overflow: auto;
+    margin-left: 2vh;
+    justify-content: flex-end;
+  }
+  .card {
+    max-height: 45vh;
+    max-width: 30vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+  }
+  .card img {
+    max-height: 20vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition-duration: 0.4s;
+    object-fit: cover;
+  }
+  .card img:hover {
+    transform: scale(1.05);
+  }
+  .card .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    padding: 1vh;
+    overflow: hidden;
+    white-space: nowrap;
+    color:#333333;
+  }
+  .card .desc {
+    margin: 0;
+    padding: 1vh;
+    font-size: 11px;
+    overflow: hidden;
+    color:rgba(100, 117, 149, 1);
+  }
+  hr {
+    width: 100%;
+    background-color: #741FA2;
+    height: 1px;
+    margin: 0;
+    margin-top: 1vh;
+  }
+  .priceTag {
+    margin: 0;
+    font-size: 10px;
+    padding: 1vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .salesDiv {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .salesDiv .realPrice {
+    font-size: 14px;
+    margin-left:1vh;
+    text-decoration: line-through;
+    color: #777E90;
+  }
+  .salesDiv .salePrice {
+    font-size: 18px;
+    color:#333333;
+  }
+  .cost {
+    margin: 0;
+    color:#741FA2;
+    font-size: 15px;
+  }
+  .deleteBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background:none;
+    border-style: none;
+    color: #741FA2;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .upload {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+  }
+    .upload input {
+    max-height: 5vh;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 1vh;
+    background-color:white;
+    color:#741FA2;
+    border-style:double;
+    border-color: #741FA2;
+    border-width: 1px;
+    font-weight: bold;
+    }
+    .upload input::placeholder {
+      color:#741FA2;
+    }
+    .upload select {
+    padding: 10px;
+    margin-top: 10px;
+    color: #741FA2;
+    border-width: 1px;
+    border-color: #741FA2;
+    }
+    .submit {
+      margin-top: 1vh;
+      padding: 10px;
+      color:white;
+      border-radius: 10px;
+      border-style: double;
+      border-color: #741FA2;
+      background-color: #741FA2;
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    .submit:hover {
+      color: #741FA2;
+      background-color: white;
+    }
