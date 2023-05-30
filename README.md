@@ -1,3 +1,7 @@
-# Demo
+# Shekitxva
 
-Kulaba თუ Yulaba? რა გითხრათ, რით გაგახაროთ
+Kulaba თუ Yulaba? 
+
+## Hipoteza
+
+რა გითხრათ რით გაგახაროთ?
