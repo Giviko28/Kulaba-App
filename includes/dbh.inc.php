@@ -2,7 +2,8 @@
 
 $serverName = "localhost";
 $user = "root";
-$password = "Molekula28";
+// Make sure to check your password and update it here
+$password = "";
 $db = "webproject";
 
 $conn = new mysqli($serverName, $user, $password,$db, 3307);
