@@ -1,6 +1,6 @@
 <?php include "header.php";
 
-/* es komentari moshale tu misha mogbezrda
+/* es komentari moshale tu misha mogbezrda, komentari daemata testirebis miznit
 if (isset($_SESSION["userid"])) {
     header("Location: index.php");
     exit();
