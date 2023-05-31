@@ -1,0 +1,12 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+main form {
+    height: 30vh;
+    width: 20vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}

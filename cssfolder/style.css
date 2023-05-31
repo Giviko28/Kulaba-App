@@ -15,6 +15,7 @@ nav {
     height: 10vh;
     width: 100%;
     position: fixed;
+    display: relative;
     z-index: 1;
     top: 0;
     left: 0;
@@ -47,6 +48,16 @@ nav {
 .wrapper ul li a:hover {
     font-size: 18px;
 }
+.wrapper .menuBtn {
+    position: absolute;
+    right: 0;
+    display: none;
+}
+.wrapper .menuBtn img {
+    height: 7vh;
+    width: 7vh;
+}
+
 footer {
     height: 5vh;
     display: flex;
@@ -85,7 +96,25 @@ footer {
     max-width: 75vh;
 }   
 @media screen and (max-width:500px){
-    .wrapper ul {
-        display: none;
+    .wrapper .menuBtn {
+        display: inline;
     }
+    .wrapper ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        background-color: #741FA2;
+        font-size: 25px;
+        top: 10vh;
+    }
+    .wrapper li {
+        padding-top: 25px;
+    }
+    
 }
+
