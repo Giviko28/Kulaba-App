@@ -22,8 +22,8 @@
 <?php
     $arr = array();
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        foreach($_POST as $key => $value) {
-            array_push($arr, $_POST[$key]);
+        foreach($_POST as $value) {
+            array_push($arr, $value);
         }
     }
     $result = getCards($conn, $arr);
