@@ -5,10 +5,10 @@
 
     <div class="slideshow">
         <div class="mySlides">
-            <img src="https://cdn.swoop.ge/ImagesStorage/ebfb1745-add3-4eb2-80de-6fa554270e8f.jpg" alt="">
+            <img src="images/banner2.jpg" alt="">
         </div>
         <div class="mySlides">
-            <img src="https://cdn.swoop.ge/ImagesStorage/f2390030-3783-4426-a8ea-21c5d6af25dd.jpg" alt="">
+            <img src="images/banner1.jpg" alt="">
         </div>
         <div class="mySlides">
             <img src="" alt="">

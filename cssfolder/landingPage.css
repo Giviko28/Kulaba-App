@@ -17,7 +17,10 @@ main {
     height: 30vh;
     width: 100%;
     border-radius: 12px;
-    object-fit: cover;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
 }
 .slideshow .mySlide {
     display: none;
@@ -45,6 +48,6 @@ main {
 }
 @media screen and (max-width:1100px) {
     main {
-        padding: 2vh 0vh 0vh;
+        padding: 2vh 4vh 0vh;
     }
 }
