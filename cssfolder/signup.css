@@ -1,0 +1,74 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h2 {
+    color: #323232;
+}
+p {
+    font-size: 14px;
+    color: #323232;
+}
+p a{
+    color:#741FA2;
+    line-height: 1.25;
+    font-size: 14px;
+}
+.messages span {
+    font-size: 12px;
+    padding: 0.1vh 0vh;
+    color:  #323232;
+}
+.box {
+    height: 60vh;
+    width: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    box-sizing: border-box;
+}
+.box form {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0vh 2vh 2vh 2vh
+}
+.box form .activeBtn {
+    cursor: pointer;
+    height: 44px !important;
+    padding: 0px 32px;
+    border-radius: 24px;
+    border-style: none;
+    color: white;
+    background-color: #741FA2;
+    font-weight: bold;
+    margin-top: 1vh;
+    transition-duration: 0.2s;
+}
+.box form .inActiveBtn {
+    cursor: not-allowed;
+    height: 44px !important;
+    padding: 0px 32px;
+    border-radius: 24px;
+    border-style: none;
+    color:#707070;
+    font-weight: bold;
+    background-color: #E0E0E0;
+    margin-top: 1vh;
+    transition-duration: 0.2s;
+}
+.box form .activeBtn:hover {
+    background-color: #E0E0E0;
+}
+.box form input {
+    padding: 1vh;
+    margin-top: 1vh;
+}
+.box form .messages {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5vh 0vh;
+}

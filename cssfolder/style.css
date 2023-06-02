@@ -67,30 +67,6 @@ footer {
     position: absolute;
     bottom: 0;
 }
-.sign-up{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-.sign-up form {
-    display: flex;
-    flex-direction: column;
-}
-.sign-up form input {
-    margin-top: 5px;
-}
-.sign-up form button {
-    margin-top: 5px;
-}
-.successWrap {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
 .misha {
     max-height: 75vh;
     max-width: 75vh;
