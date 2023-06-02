@@ -1,5 +1,6 @@
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -15,14 +16,17 @@ p a{
     line-height: 1.25;
     font-size: 14px;
 }
+.messages {
+    margin-top: 1vh;
+}
 .messages span {
     font-size: 12px;
-    padding: 0.1vh 0vh;
+    padding: 0.2vh 0vh;
     color:  #323232;
 }
 .box {
     height: 60vh;
-    width: 40vh;
+    width: 35vh;
     display: flex;
     justify-content: center;
     align-items: center;

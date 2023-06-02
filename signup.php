@@ -1,9 +1,9 @@
 <?php include "header.php" ?>
 <link rel="stylesheet" href="cssfolder/signup.css">
     <main>
-        <div class = "box">
             <h2>შემოგვიერთდით</h2>
             <p>გაქვს უკვე ანგარიში? <a href="login.php">Log in</a></p>
+        <div class = "box">
             <form id = "signupForm" action="includes/signup.inc.php" onsubmit = "return validateForm()" method="post">
                 <input onchange = "validateName()" type="text" name="name" placeholder = "სახელი:">
                 <input onchange = "validateEmail()" type="text" name="email" placeholder = "მეილი:">

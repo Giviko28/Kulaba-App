@@ -1,7 +1,13 @@
-const signUpForm = document.querySelector("#signupForm");
+window.removeEventListener("resize", resizeHandler);
+window.removeEventListener("load", loadHandler);
 
+const signUpForm = document.querySelector("#signupForm");
+const headerUl = document.querySelector("#menu");
+headerUl.style.display = "none";
 let symbolPattern = /[\W_]/;
 let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
 
 function displayX(inp)  {
     if(inp.indexOf("✓") !== -1) {
@@ -110,6 +116,7 @@ function validatePwdRepeat() {
     let pwd = signUpForm["pwd"].value.trim();
     let pwdRepeat = signUpForm["pwdrepeat"].value.trim();
     let pwdRepeatSpan = document.querySelector("#pwdRepeat");
+    
     if(pwd !== pwdRepeat){
         pwdRepeatSpan.style.color = "red";
         pwdRepeatSpan.innerText = displayX(pwdRepeatSpan.innerText);

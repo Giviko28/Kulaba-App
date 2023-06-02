@@ -48,22 +48,22 @@
             const menuButton = document.getElementById('menuButton');
             const menu = document.getElementById('menu');
             const nextPage = document.getElementById("nextPage");
-            window.addEventListener('resize', () => {
+            const resizeHandler = () => {
                 if (window.innerWidth > 500) {
-                    menu.style.display = 'flex'; // Set display to flex when window width is greater than 500px
+                    menu.style.display = 'flex';
                 } else {
-                    menu.style.display = 'none'; // Hide the menu when window width is 500px or below
+                    menu.style.display = 'none';
                 }
-            });
-            
-            window.addEventListener('load', () => {
-            if (window.innerWidth > 500) {
-                menu.style.display = 'flex'; // Set display to flex on page load if window width is already greater than 500px
-            } else {
-                menu.style.display = 'none'; // Hide the menu on page load if window width is 500px or below
-            }
-            });
+            };
 
+            const loadHandler = () => {
+                if (window.innerWidth > 500) {
+                    menu.style.display = 'flex';
+                } else {
+                    menu.style.display = 'none';
+                }
+            };
+            
             function handleClick() {
             if (menu.style.display === 'none' || window.innerWidth>500) {
                 menu.style.display = 'flex';
@@ -72,6 +72,8 @@
             }
             }
             
+            window.addEventListener('resize', resizeHandler);
+            window.addEventListener('load', loadHandler);
             nextPage.addEventListener('click', handleClick);
             menuButton.addEventListener('click', handleClick);
         </script>
