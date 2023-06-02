@@ -1,4 +1,5 @@
 <?php include "header.php" ?>
+<img src="images/signup.png" alt="" class="backGround">
 <link rel="stylesheet" href="cssfolder/signup.css">
     <main>
             <h2>შემოგვიერთდით</h2>

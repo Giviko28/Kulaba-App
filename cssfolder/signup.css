@@ -4,6 +4,16 @@ main {
     justify-content: center;
     align-items: center;
 }
+.backGround {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.wrapper ul {
+    display: none;
+}
 h2 {
     color: #323232;
 }
