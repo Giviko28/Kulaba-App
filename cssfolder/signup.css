@@ -86,3 +86,8 @@ p a{
     flex-direction: column;
     padding: 0.5vh 0vh;
 }
+@media screen and (max-width:800px) {
+    .backGround {
+        display: none;
+    }
+}

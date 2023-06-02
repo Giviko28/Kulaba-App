@@ -189,6 +189,45 @@ function getCards($conn, $categories) {
     $stmt->close();
     return $result;
 }
+function getRecentCards($conn) {
+    $sql = "SELECT * FROM cards ORDER BY upload_date DESC";
+    $stmt = $conn->prepare($sql);
+    if($stmt) {
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    } else {
+        die("Statement failure");
+    }
+}
+function printCards($amount, $cards) {
+    while (($row = $cards->fetch_assoc()) && ($amount !== 0)){
+        $img = $row["image"];
+        $name = $row["restaurantName"];
+        $desc = $row["shortDesc"];
+        $price = $row["price"];
+        echo "
+        <div class = 'card'>
+        <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
+        <p class ='title'>$name</p>
+        <p class ='desc'>$desc</p>
+        <hr>
+            <div class='priceTag'>
+                <div class='salesDiv'>
+                    <p class='salePrice'>
+                        325₾
+                    </p>
+                    <p class='realPrice'>
+                        425₾
+                    </p>
+                </div>
+                <p class ='cost'>$price ჯიზია</p>
+            </div>
+        </div>
+        ";
+        $amount--;
+    }
+}
 function checkEmptyArray($arr) {
     foreach($arr as $val) {
         if(empty($val))

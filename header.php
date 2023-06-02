@@ -17,9 +17,9 @@
 <body>
     <nav>
         <div class ="wrapper">
-            <h1><a href="index.php">KULABA</a></h1>
+            <h1><a href="landingPage.php">KULABA</a></h1>
             <ul id ="menu">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="landingPage.php">Home</a></li>
                 <?php if (isset($_SESSION["userid"]))
                 echo '<li id="nextPage"><a href="tasks.php">Tasks</a></li>';
                 ?>
