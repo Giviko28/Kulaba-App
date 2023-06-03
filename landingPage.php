@@ -1,4 +1,4 @@
-<?php require "header.php" ?>
+<?php require "header.php"?>
 <link rel="stylesheet" href="cssfolder/landingPage.css">
 
 <main>
@@ -56,10 +56,9 @@
             <a href="index.php">ყველას ნახვა</a>
         </div>
         <div class = "recentCards">
-            <?php printCards(6, getRecentCards($conn)); ?>
+            <?php printCards(7, getRecentCards($conn)); ?>
         </div>
     </div>
-
 </main>
 
 <script src="includes/landingPage.js"></script>

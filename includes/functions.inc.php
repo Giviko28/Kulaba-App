@@ -156,6 +156,7 @@ function loginUser($conn, $username, $pwd) {
         $_SESSION["usermail"] = $uidExists["usersEmail"];
         $_SESSION["userUid"] = $uidExists["usersUid"];
         $_SESSION["balance"] = $uidExists["coins"];
+        $_SESSION["cart"] = array();
         header("Location: ../login.php?error=success");
         exit();
     }
@@ -206,8 +207,9 @@ function printCards($amount, $cards) {
         $name = $row["restaurantName"];
         $desc = $row["shortDesc"];
         $price = $row["price"];
+        $cardId = $row["id"];
         echo "
-        <div class = 'card'>
+        <form class = 'card' action = 'productPage.php' method = 'GET'>
         <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
         <p class ='title'>$name</p>
         <p class ='desc'>$desc</p>
@@ -223,9 +225,22 @@ function printCards($amount, $cards) {
                 </div>
                 <p class ='cost'>$price ჯიზია</p>
             </div>
-        </div>
+            <input type='hidden' value = $cardId name = 'cardId'>
+        </form>
         ";
         $amount--;
+    }
+}
+function getCardById($conn, $id) {
+    $sql = "SELECT * FROM cards where id = ?";
+    $stmt = $conn->prepare($sql);
+    if($stmt){
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        return $stmt->get_result();
+    } else {
+        die("Statement error");
     }
 }
 function checkEmptyArray($arr) {

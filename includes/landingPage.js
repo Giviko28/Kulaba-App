@@ -16,3 +16,21 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
 }
+
+let cards = document.getElementsByClassName("card");
+
+// მასივად ვაქცევთ getElementsByClassName-იდან მიღებულ ინფორმაციას
+let cardsArray = [...cards];
+
+cardsArray.forEach(function(card) {
+  card.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Find the closest form element to the clicked card
+    let form = this.closest('form');
+    
+    if (form) {
+      form.submit(); // Submit the form
+    }
+  });
+});

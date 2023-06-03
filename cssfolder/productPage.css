@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+main {
+    width: 100%;
+    padding: 4vh 40vh 0vh;
+    display: flex;
+}
+.left {
+    width: 60%;
+}
+.slideshow {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+}
+.imgSideBar {
+    height: 100%;
+    width: 10vh;
+    overflow: hidden;
+}
+.imgSideBar img {
+    height: 10vh;
+    width: 10vh;
+}
+.mainImg {
+    height: 100%;
+    width: 100%;
+    margin-left: 1vh;
+}
+.mainImg img {
+    height: 100%;
+    width: 100%;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 3vh;
+}
+.right span {
+    color: #a66800;
+}
+.right form button {
+    padding: 1.5vh 2vh;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    background-color: #741FA2;
+    color: white;
+    margin-top: 2vh;
+    transition-duration: 0.3s;
+}
+.right form button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #741FA2;
+}
+.sale {
+    display: flex;
+    align-items: center;
+}
+.oldPrice {
+    font-size: 0.8rem;
+    text-decoration:line-through;
+    margin-left: 1vh;
+    color:#595959 !important;
+}
+.newPrice {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 32px;
+}
+.salePercent {
+    font-size: 0.8rem;
+    margin-left: 1vh;
+    color:#595959 !important;
+}
+.desc {
+    margin: 0;
+    margin-top: 2vh;
+}
+.rating {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #222222;
+    font-weight: 700;
+}

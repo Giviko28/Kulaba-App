@@ -10,7 +10,28 @@ body {
     padding-top: 10vh;
     box-sizing: border-box;
 }
-
+.cart {
+    height: 5vh;
+    width: 5vh;
+    background-color: #741FA2;
+    border-radius: 18px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 6vh;
+    bottom: 6vh;
+}
+.cart:hover {
+    cursor: pointer;
+}
+.cart img {
+    height: 3vh;
+    width: 3vh;
+}
+.cart img:hover {
+    cursor: pointer;
+}
 nav {
     height: 10vh;
     width: 100%;

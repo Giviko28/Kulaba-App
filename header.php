@@ -15,6 +15,16 @@
     <link rel="stylesheet" href="cssfolder/style.css">
 </head>
 <body>
+    <?php
+    if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])){
+    echo"
+    <form action='' class = 'cart'>
+        <img src='images/cart.jpg' alt''>
+        <p></p>
+    </form>
+    ";
+    }
+    ?>
     <nav>
         <div class ="wrapper">
             <h1><a href="landingPage.php">KULABA</a></h1>
