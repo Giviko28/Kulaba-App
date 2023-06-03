@@ -11,8 +11,8 @@ body {
     box-sizing: border-box;
 }
 .cart {
-    height: 5vh;
-    width: 5vh;
+    height: 6vh;
+    width: 6vh;
     background-color: #741FA2;
     border-radius: 18px;
     position: fixed;
@@ -21,6 +21,7 @@ body {
     align-items: center;
     right: 6vh;
     bottom: 6vh;
+    z-index: 3;
 }
 .cart:hover {
     cursor: pointer;
@@ -112,6 +113,11 @@ footer {
     .wrapper li {
         padding-top: 25px;
     }
+    .cart {
+        height: 7vh;
+        width: 7vh;
+        right: 0
+    };
     
 }
 
