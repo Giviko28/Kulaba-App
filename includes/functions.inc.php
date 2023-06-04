@@ -7,7 +7,6 @@ function clean_input($data) {
 
     return $data;
 }
-
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat){
     if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
         return true;

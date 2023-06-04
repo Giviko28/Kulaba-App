@@ -23,7 +23,7 @@
         <p></p>
     </form>
     ";
-    }
+    } else {echo'<span id = "cart" style = "display:none;"></span>';}
     ?>
     <nav>
         <div class ="wrapper">

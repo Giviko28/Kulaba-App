@@ -7,13 +7,9 @@ if(isset($_POST["submit"]) && $_FILES["img"]["error"] === 0) {
 
     $name = clean_input($_POST["name"]);
     $desc = clean_input($_POST["desc"]);
-    $price = clean_input($_POST["price"]);
-    if(filter_var($_POST["realprice"],FILTER_SANITIZE_NUMBER_INT) === false || filter_var($_POST["salesprice"], FILTER_SANITIZE_NUMBER_INT) === false) {
-        header("Location: ../uploadPage.php?error=invalidNumType");
-        exit();
-    }
-    $realprice = clean_input($_POST["realprice"]);
-    $salesprice = clean_input($_POST["salesprice"]);
+    $price = $_POST["price"];
+    $realprice = $_POST["realprice"];
+    $salesprice = $_POST["salesprice"];
     $usersid = $_SESSION["userid"];
     $imgPath = $_FILES["img"]["tmp_name"];
     $category_id = $_POST["category_id"];
@@ -22,6 +18,14 @@ if(isset($_POST["submit"]) && $_FILES["img"]["error"] === 0) {
 
     if(emptyCardInfo($name, $desc, $price, $category_id) !== false) {
         header("Location: ../uploadPage.php?error=emptyfields");
+        exit();
+    }
+    if((filter_var($realprice,FILTER_VALIDATE_INT) === false) || (filter_var($salesprice, FILTER_VALIDATE_INT) === false) || (filter_var($price, FILTER_VALIDATE_INT) === false) || (filter_var($category_id,FILTER_VALIDATE_INT) === false)) {
+        header("Location: ../uploadPage.php?error=invalidNumType");
+        exit();
+    }
+    if(invalidUid($name) !== false) {
+        header("Location: ../uploadPage.php?error=invalidName");
         exit();
     }
 
