@@ -42,27 +42,6 @@ function pwdMatch($pwd, $pwdRepeat) {
     }
     return false;
 }
-/*
-function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../signup.php?error=statementfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
-    mysqli_stmt_execute($stmt);
-
-    $resultData = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($resultData)) {
-        return $row;
-    } else {
-        return false;
-    }
-    mysqli_stmt_close($stmt);
-}
-*/
 
 function uidExists($conn, $username, $email) {
     $sql = "SELECT * FROM users WHERE usersEmail = ? OR usersUid = ?";
@@ -83,26 +62,6 @@ function uidExists($conn, $username, $email) {
     $stmt->close();
 }
 
-
-/*
-function createUser($conn, $name, $email, $username, $pwd) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd)
-    VALUES (?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: ../signup.php?error=statementfailed");
-        exit();
-    }
-
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    header("Location: ../signup.php?error=none");
-    exit();
-}
-*/
 function createUser($conn, $name, $email, $username, $pwd) {
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd)
@@ -156,7 +115,7 @@ function loginUser($conn, $username, $pwd) {
         $_SESSION["usermail"] = $uidExists["usersEmail"];
         $_SESSION["userUid"] = $uidExists["usersUid"];
         $_SESSION["balance"] = $uidExists["coins"];
-        $_SESSION["cart"] = array();
+        $_SESSION["cart"] = checkCart($conn, $uidExists["usersId"]);
         header("Location: ../login.php?error=success");
         exit();
     }
@@ -208,6 +167,9 @@ function printCards($amount, $cards) {
         $desc = $row["shortDesc"];
         $price = $row["price"];
         $cardId = $row["id"];
+        $realPrice = $row["real_price"]."₾";
+        $salesPrice = $row["sales_price"]."₾";
+        
         echo "
         <form class = 'card' action = 'productPage.php' method = 'GET'>
         <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
@@ -217,10 +179,10 @@ function printCards($amount, $cards) {
             <div class='priceTag'>
                 <div class='salesDiv'>
                     <p class='salePrice'>
-                        325₾
+                        $salesPrice
                     </p>
                     <p class='realPrice'>
-                        425₾
+                        $realPrice
                     </p>
                 </div>
                 <p class ='cost'>$price ჯიზია</p>
@@ -238,7 +200,44 @@ function getCardById($conn, $id) {
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        return $stmt->get_result();
+        $result = $stmt->get_result();
+        $card = $result->fetch_assoc();
+
+        $stmt->close();
+
+        return $card;
+    } else {
+        die("Statement error");
+    }
+}
+function addToCartById($conn, $id) {
+    $sql = "INSERT INTO cart (user_id, card_id)
+    VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    if($stmt){
+        $stmt->bind_param("ii", $_SESSION["userid"], $id);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        die("Server error");
+    }
+}
+function checkCart($conn, $userid) {
+    $sql = "SELECT * FROM cart WHERE user_id = ?";
+    $stmt = $conn->prepare($sql);
+    if($stmt){ 
+        $arr = array();
+        $stmt->bind_param("i",$userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0) {
+            $arr = array();
+            while($row = $result->fetch_assoc()){
+                array_push($arr, $row["card_id"]);
+            }
+        }
+        $stmt->close();
+        return $arr;
     } else {
         die("Statement error");
     }

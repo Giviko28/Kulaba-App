@@ -8,6 +8,12 @@ if(isset($_POST["submit"]) && $_FILES["img"]["error"] === 0) {
     $name = clean_input($_POST["name"]);
     $desc = clean_input($_POST["desc"]);
     $price = clean_input($_POST["price"]);
+    if(filter_var($_POST["realprice"],FILTER_SANITIZE_NUMBER_INT) === false || filter_var($_POST["salesprice"], FILTER_SANITIZE_NUMBER_INT) === false) {
+        header("Location: ../uploadPage.php?error=invalidNumType");
+        exit();
+    }
+    $realprice = clean_input($_POST["realprice"]);
+    $salesprice = clean_input($_POST["salesprice"]);
     $usersid = $_SESSION["userid"];
     $imgPath = $_FILES["img"]["tmp_name"];
     $category_id = $_POST["category_id"];
@@ -35,10 +41,10 @@ if(isset($_POST["submit"]) && $_FILES["img"]["error"] === 0) {
         exit();
     }
 
-    $sql = "INSERT INTO cards (image, restaurantName, shortDesc, price, usersid, category_id)
-    VALUES (?, ?, ?, ?, ?,?)";
+    $sql = "INSERT INTO cards (image, restaurantName, shortDesc, price, usersid, category_id, sales_price, real_price)
+    VALUES (?, ?, ?, ?, ?,?,?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssiii", $img, $name, $desc, $price, $usersid, $category_id);
+    $stmt->bind_param("sssiiiii", $img, $name, $desc, $price, $usersid, $category_id, $salesprice, $realprice);
     $stmt->execute();
     $stmt->close();
     $conn->close();

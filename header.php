@@ -18,7 +18,7 @@
     <?php
     if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])){
     echo"
-    <form action='' class = 'cart'>
+    <form id ='cart' action='checkoutPage.php' class = 'cart'>
         <img src='images/cart.jpg' alt''>
         <p></p>
     </form>
@@ -58,6 +58,7 @@
             const menuButton = document.getElementById('menuButton');
             const menu = document.getElementById('menu');
             const nextPage = document.getElementById("nextPage");
+            const checkOut = document.querySelector("#cart");
             const resizeHandler = () => {
                 if (window.innerWidth > 500) {
                     menu.style.display = 'flex';
@@ -81,9 +82,22 @@
                 menu.style.display = 'none';
             }
             }
-            
+            function handleClickForBtn() {
+            if (menu.style.display === 'none' || window.innerWidth>500) {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+
+            }
+            checkOut.addEventListener('click', function(){
+                let form = this.closest("form");
+                if(form) {
+                    form.submit();
+                }
+            });
             window.addEventListener('resize', resizeHandler);
             window.addEventListener('load', loadHandler);
             nextPage.addEventListener('click', handleClick);
-            menuButton.addEventListener('click', handleClick);
+            menuButton.addEventListener('click', handleClickForBtn);
         </script>

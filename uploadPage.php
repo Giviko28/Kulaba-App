@@ -48,6 +48,8 @@
                     <input type="text" name="name" placeholder="რესტორანის სახელი:">
                     <input type="text" name="desc" placeholder="მოკლე აღწერა">
                     <input type="number" min="0" max="1000" name="price" placeholder="ფასი">
+                    <input type="number" min="0" max="1000" name="realprice" placeholder="რეალური ფასი">
+                    <input type="number" min="0" max="1000" name="salesprice" placeholder="ფასდაკლებული ფასი">
                     <select name="category_id">
                         <option value="" disabled selected>აირჩიე კატეგორია</option>
                         <option value=1>სუში</option>
