@@ -103,7 +103,6 @@ function validatePwd() {
         return false;
     } else {
         pwdSpan.style.color = "green";
-        validatePwdRepeat();
         pwdSpan.innerText = displayTick(pwd.innerText);
     }
     buttonCheck();
@@ -115,7 +114,7 @@ function validatePwdRepeat() {
     let pwdRepeat = signUpForm["pwdrepeat"].value.trim();
     let pwdRepeatSpan = document.querySelector("#pwdRepeat");
     
-    if(pwd !== pwdRepeat){
+    if(pwd !== pwdRepeat || pwdRepeat == ""){
         pwdRepeatSpan.style.color = "red";
         pwdRepeatSpan.innerText = displayX(pwdRepeatSpan.innerText);
         buttonCheck();

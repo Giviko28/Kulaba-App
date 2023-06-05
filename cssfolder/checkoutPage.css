@@ -5,7 +5,15 @@ main {
     width: 100%;
     padding: 5vh 40vh;
     display: flex;
+    position: relative;
 }
+.message {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
 .checkout {
     display: flex;
     width: 100%;
@@ -24,7 +32,20 @@ main {
     width: 100%;
     margin-top: 1vh;
 }
-
+.container button {
+    position: absolute;
+    top: 0.1vh;
+    right: 0.1vh;
+    background-color: white;
+    border: none;
+}
+.container button img {
+    height: 20px;
+    width: 20px;
+}
+.container button img:hover {
+    cursor: pointer;
+}
 .container img {
     border-radius: 1.2rem;
     object-fit: cover;

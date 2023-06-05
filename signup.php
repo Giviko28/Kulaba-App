@@ -6,11 +6,11 @@
             <p>გაქვს უკვე ანგარიში? <a href="login.php">Log in</a></p>
         <div class = "box">
             <form id = "signupForm" action="includes/signup.inc.php" onsubmit = "return validateForm()" method="post">
-                <input onchange = "validateName()" type="text" name="name" placeholder = "სახელი:">
-                <input onchange = "validateEmail()" type="text" name="email" placeholder = "მეილი:">
-                <input onchange = "validateUsername()" type="text" name="uid" placeholder = "პირობითი სახელი:">
-                <input onchange = "validatePwd()" type="password" name="pwd" placeholder = "პაროლი:">
-                <input onchange = "validatePwdRepeat()" type="password" name="pwdrepeat" placeholder = "გაიმეორეთ პაროლი:">
+                <input onkeyup = "validateName()" type="text" name="name" placeholder = "სახელი:">
+                <input onkeyup = "validateEmail()" type="text" name="email" placeholder = "მეილი:">
+                <input onkeyup = "validateUsername()" type="text" name="uid" placeholder = "პირობითი სახელი:">
+                <input onkeyup = "validatePwd()" type="password" name="pwd" placeholder = "პაროლი:">
+                <input onkeyup = "validatePwdRepeat()" type="password" name="pwdrepeat" placeholder = "გაიმეორეთ პაროლი:">
                 <div class= "messages">
                     <span id = "name">სახელი არ უნდა იყოს ცარიელი</span>
                     <span id = "email">მეილის ფორმატი უნდა იყოს სწორი</span>

@@ -2,69 +2,57 @@
 <link rel="stylesheet" href="cssfolder/checkoutPage.css">
 
 <?php
-$totalRealPrice = $totalSalesPrice = $totalCoinPrice = 0;
 echo '
+<p class = "message" id = "message"></p>
 <main>
-    <div class = "checkout">
-        <div class = "items">';
-                if(isset($_SESSION["cart"])){
-                    $arr = $_SESSION["cart"];
-                    for($i = 0; $i<count($arr);$i++){
-                        $card = getCardById($conn, $arr[$i]);
-                        $img = $card["image"];
-                        $shortDesc = $card["shortDesc"];
-                        $coinPrice = $card["price"];
-                        $realPrice = $card["real_price"];
-                        $salesPrice = $card["sales_price"];
-                        $totalCoinPrice += $coinPrice;
-                        $totalSalesPrice += $salesPrice;
-                        $totalRealPrice += $realPrice;
-                        echo "
-                    <form class ='container'>
-                        <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
-                    <div class = 'titles' >
-                        <p>$shortDesc</p>
-                        <p>$coinPrice ჯიზია</p>
-                        <p class = 'amount'>1</p>
-                        <p>$realPrice GEL</p>
-                    </div>
-                    </form>";
-                    }
-                }
-        echo '
-        </div>
-        <div class = "price">
-        ';
-        $savedTotal = $totalRealPrice - $totalSalesPrice;
-        echo "
-                <div>
-                    <p>რეალური ფასი</p>
-                    <p>$totalRealPrice GEL</p>
-                </div>
-                <div>
-                    <p>ფასდაკლებული ფასი</p>
-                    <p>$totalSalesPrice GEL</p>
-                </div>
-                <div>
-                    <p>ქოინური ფასი</p>
-                    <p>$totalCoinPrice</p>
-                </div>
-                <div>
-                    <p>დაზოგილი თანხა</p>
-                    <p>$savedTotal GEL</p>
-                </div>
-                <form action=''>
-                    <button type='submit'>შეძენა</button>
-                </form>
-        </div>
-        ";
-        ?>
+    <div id = "checkout" class = "checkout">
     </div>
-</main>
-<?php
-
-
+</main>';
 ?>
+<script>
+    function loadCart() {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200){
+                document.querySelector("#checkout").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("POST", "includes/cart_operations/loadCart.php", true);
+        xhttp.send();
+    }
+    function updatePrice() {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200){
+                let response = JSON.parse(xhttp.responseText);
+
+                document.querySelector("#real").innerHTML = response["realPrice"];
+                document.querySelector("#sale").innerHTML = response["salesPrice"];
+                document.querySelector("#total").innerHTML = response["coinPrice"];
+                document.querySelector("#saved").innerHTML = response["totalPrice"];
+            }
+        }
+        xhttp.open("POST", "includes/cart_operations/updatePrice.php", true);
+        xhttp.send();
+    }
+    function updateCart(id) {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200){
+               document.getElementById(id).innerHTML = "";
+               document.getElementById(id).style.display = "none";
+               document.querySelector("#message").innerHTML = this.responseText;
+               updatePrice();
+            }
+        }
+        xhttp.open("GET", "includes/cart_operations/deleteItemFromCart.php?id=" + id, true);
+        xhttp.send();
+    }
+    
+    window.addEventListener("load", loadCart());
+
+
+</script>
 
 
 <?php require "footer.php"; ?>
