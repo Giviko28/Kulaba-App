@@ -19,4 +19,6 @@ $prices = array(
     "coinPrice" => $coinPrice
 );
 echo json_encode($prices);
-} 
+} else {
+    echo "გაიარე ავტორიზაცია";
+}

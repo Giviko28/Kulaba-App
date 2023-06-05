@@ -17,8 +17,10 @@ function deleteCard($conn, $id) {
 
 if (isset($_GET["id"])){
     if(deleteCard($conn, $_GET["id"]) === true){
-        echo "Item removed from cart";
+        echo "ნივთი ამოღებულია კალათიდან";
+    }  else {
+        echo "შეცდომა";
     }
-} else {
-   echo "Error deleting something that doesn't exist";
+}else {
+    echo "გაიარე ავტორიზაცია";
 }
