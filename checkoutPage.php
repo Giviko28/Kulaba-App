@@ -37,10 +37,10 @@ echo '
             if(this.readyState === 4 && this.status === 200){
                 let response = JSON.parse(xhttp.responseText);
 
-                document.querySelector("#real").innerHTML = response["realPrice"];
-                document.querySelector("#sale").innerHTML = response["salesPrice"];
+                document.querySelector("#real").innerHTML = response["realPrice"] + "GEL";
+                document.querySelector("#sale").innerHTML = response["salesPrice"] + "GEL";
                 document.querySelector("#total").innerHTML = response["coinPrice"];
-                document.querySelector("#saved").innerHTML = response["totalPrice"];
+                document.querySelector("#saved").innerHTML = response["totalPrice"] + "GEL";
             }
         }
         xhttp.open("POST", "includes/cart_operations/updatePrice.php", true);

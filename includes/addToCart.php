@@ -2,13 +2,11 @@
 require "dbh.inc.php";
 require "functions.inc.php";
 session_start();
-if (isset($_POST["id"]) && isset($_SESSION["cart"])) {
-    $cardId = $_POST["id"];
+if (isset($_GET["id"]) && isset($_SESSION["cart"])) {
+    $cardId = $_GET["id"];
     addToCartById($conn, $cardId);
     $_SESSION["cart"] = checkCart($conn, $_SESSION["userid"]);
-    header("Location: ../productPage.php?cardId=$cardId");
-    exit();
+    echo "დაემატა კალათაში";
 } else {
-    header("Location: ../productPage.php?cardId={$_POST['id']}");
-    exit();
+    echo "გაიარე ავტორიზაცია";
 }

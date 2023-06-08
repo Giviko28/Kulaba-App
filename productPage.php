@@ -1,7 +1,6 @@
 <?php require "header.php" ?>
 <link rel="stylesheet" href="cssfolder/productPage.css">
 <?php 
-
 if (isset($_GET["cardId"])) {
     $id = $_GET["cardId"];
     $card = getCardById($conn, $id);
@@ -37,17 +36,46 @@ if (isset($_GET["cardId"])) {
         </div>
         <p class ="rating">მარაბელი ★★★★★</p>
         <p class="desc">'. $desc .'</p>
-        <form action="includes/addToCart.php" method ="POST">
-            <input type= "hidden" name="id" value = "'.$id.'">
-            <button type="submit">კალათაში დამატება</button>
-        </form>
+        <div>
+            <button onclick = "addToCart('.$id.')">კალათაში დამატება</button>
+            <p id = "msg" class="msg"></p>
+        </div>
     </div>
     </main>
     ';
+    echo'
+    <script>
+    function showMessage(message, duration){
+        let msg = document.querySelector("#msg");
+        msg.innerText = message;
+        msg.style.display = "block";
+        setTimeout(function() {
+            msg.style.display = "none";
+        }, duration);
+    };
+    function addToCart(id){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200){
+        ';
+                if(isset($_SESSION["cart"])) {
+                    echo'
+                        let cart = document.querySelector("#cart");
+                        cart.className = "cart";
+                        ';
+                }
+    echo'
+                showMessage(this.responseText, 2500);
+            }
+        }
+        xhttp.open("GET", "includes/addToCart.php?id=" + id, true);
+        xhttp.send();
+    }
+    </script>
+        ';
 } else {
     header("Location: landingPage.php");
     exit();
 }
-
 ?>
 <?php require "footer.php" ?>

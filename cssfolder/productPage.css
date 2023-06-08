@@ -33,7 +33,14 @@ main {
     height: 100%;
     width: 100%;
 }
+.msg {
+    display: none;
+    color: #741FA2;
+    position: absolute;
+    left: 33%;
+}
 .right {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -42,7 +49,7 @@ main {
 .right span {
     color: #a66800;
 }
-.right form button {
+.right  button {
     padding: 1.5vh 2vh;
     width: 100%;
     border-radius: 12px;
@@ -52,7 +59,7 @@ main {
     margin-top: 2vh;
     transition-duration: 0.3s;
 }
-.right form button:hover {
+.right button:hover {
     cursor: pointer;
     background-color: white;
     color: #741FA2;

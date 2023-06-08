@@ -16,14 +16,15 @@
 </head>
 <body>
     <?php
-    if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])){
-    echo"
+    $cart ="
     <form id ='cart' action='checkoutPage.php' class = 'cart'>
         <img src='images/cart.jpg' alt''>
-        <p></p>
+        <p class = 'cartCount'></p>
     </form>
     ";
-    } else {echo'<span id = "cart" style = "display:none;"></span>';}
+    if(isset($_SESSION["cart"]) && !empty($_SESSION["cart"])){
+        echo $cart;
+    } else {echo str_replace("class = 'cart'", "class = 'hidden'", $cart);}
     ?>
     <nav>
         <div class ="wrapper">

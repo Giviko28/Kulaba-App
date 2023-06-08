@@ -14,11 +14,14 @@ body {
     padding-top: 10vh;
     box-sizing: border-box;
 }
+.hidden {
+    display: none;
+}
 .cart {
     height: 6vh;
     width: 6vh;
     background-color: #741FA2;
-    border-radius: 18px;
+    border-radius: 20px;
     position: fixed;
     display: flex;
     justify-content: center;
@@ -36,6 +39,11 @@ body {
 }
 .cart img:hover {
     cursor: pointer;
+}
+.cartCount {
+    position: absolute;
+    top: 0;
+    color: white;
 }
 nav {
     height: 10vh;
