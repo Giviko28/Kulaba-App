@@ -56,7 +56,7 @@
             <a href="index.php">ყველას ნახვა</a>
         </div>
         <div class = "recentCards">
-            <?php printCards(7, getRecentCards($conn)); ?>
+            <?php printCards(10, getRecentCards($conn)); ?>
         </div>
     </div>
 </main>

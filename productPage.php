@@ -50,5 +50,4 @@ if (isset($_GET["cardId"])) {
 }
 
 ?>
-<input type="hidden" name="id" value = "$id">
 <?php require "footer.php" ?>

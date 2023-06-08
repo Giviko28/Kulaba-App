@@ -24,10 +24,6 @@ if(isset($_POST["submit"]) && $_FILES["img"]["error"] === 0) {
         header("Location: ../uploadPage.php?error=invalidNumType");
         exit();
     }
-    if(invalidUid($name) !== false) {
-        header("Location: ../uploadPage.php?error=invalidName");
-        exit();
-    }
 
     if($imageInfo !== false){
         $imageType = $imageInfo[2];
