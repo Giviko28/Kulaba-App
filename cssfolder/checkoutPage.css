@@ -65,17 +65,18 @@ main {
     justify-content: space-between;
     padding: 0.1vh;
 }
-.price form {
+.price .btn {
     display: flex;
     justify-content: center;
 }
-.price form button {
+.price .btn button {
     width: 50%;
     padding: 1vh;
     border: none;
     background: #741FA2;
     color: white;
     border-radius: 16px;
+    cursor: pointer;
 
 }
 .titles {

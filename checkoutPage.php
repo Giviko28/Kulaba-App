@@ -10,6 +10,17 @@ echo '
 </main>';
 ?>
 <script>
+    function purchase() {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200){
+                document.querySelector("#message").innerHTML = this.responseText;
+                loadCart();
+            }
+        }
+        xhttp.open("POST", "includes/cart_operations/checkOut.php", true)
+        xhttp.send("");
+    }
     function loadCart() {
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){

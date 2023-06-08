@@ -53,9 +53,9 @@ if(isset($_SESSION["cart"])){
                 <p>დაზოგილი თანხა</p>
                 <p id = 'saved'>$savedTotal GEL</p>
             </div>
-            <form action=''>
-                <button type='submit'>შეძენა</button>
-            </form>
+                <div class ='btn'>
+                <button onclick = 'purchase()' type='submit'>შეძენა</button>
+                </div>
         </div>
         ";
 }

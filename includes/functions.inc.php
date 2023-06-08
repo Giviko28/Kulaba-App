@@ -230,7 +230,6 @@ function checkCart($conn, $userid) {
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows > 0) {
-            $arr = array();
             while($row = $result->fetch_assoc()){
                 array_push($arr, $row["card_id"]);
             }
