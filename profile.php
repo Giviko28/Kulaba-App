@@ -6,6 +6,9 @@ if(!isset($_SESSION["userid"])){
     header("Location: signup.php");
     exit();
 }
+$userRepository = new UserRepository($conn);
+$savings = $userRepository->getSavings($_SESSION["userid"]);
+$_SESSION["saved"] = $savings[0] - $savings[1];
 ?>
 <link rel="stylesheet" href="cssfolder/profile.css">
 <main>
@@ -23,7 +26,7 @@ if(!isset($_SESSION["userid"])){
             <div class ="detailsRoot2">
                 <div class = "savings">
                     <h3>დანაზოგი</h3>
-                    <p>₾0.00</p>
+                    <p>₾<?php echo $_SESSION["saved"] ?></p>
                 </div>
 
                 <div class = "balance">
@@ -36,7 +39,7 @@ if(!isset($_SESSION["userid"])){
         <div class = "settingsNav">
             <div>
                 <div><img src="images/Screenshot_43.png" alt=""></div>
-                <a href="">ჩემი შეთავაზებები ></a>
+                <a href="my_purchases.php">ჩემი შეთავაზებები ></a>
                 <p>შეიძინე შეთავაზებები და იხილე აქ</p>
             </div>
             <div>
@@ -54,8 +57,8 @@ if(!isset($_SESSION["userid"])){
             echo '
             <div>
                 <div><img src="images/Screenshot_45.png" alt=""></div>
-                <a href="">გადახდის მეთოდი ></a>
-                <p>დაამატე ან გააუქმე ბარათი</p>
+                <a href="">შეთავაზების დამატება></a>
+                <p>დაეხმარე ხალხს დაზოგოს ფული</p>
             </div>
             ';
             }
@@ -64,8 +67,5 @@ if(!isset($_SESSION["userid"])){
 
     </div>
 </main>
-
-<script>
-</script>
 
 <?php include "footer.php" ?>

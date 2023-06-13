@@ -98,7 +98,7 @@ main {
         display: none;
     }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
     .checkout {
         display: flex;
         flex-direction: column;
@@ -111,6 +111,7 @@ main {
         align-items: center;
     }
     .price {
+        margin-top: 2%;
         width: 70%;
     }
 }

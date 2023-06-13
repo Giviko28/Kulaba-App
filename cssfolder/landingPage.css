@@ -209,7 +209,7 @@ main {
         padding: 2vh 4vh 0vh;
     }
 }
-@media screen and (max-width:500px) {
+@media screen and (max-width:576px) {
   .categories {
     flex-direction: column;
     align-items: center;

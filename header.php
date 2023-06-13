@@ -61,7 +61,7 @@
             const nextPage = document.getElementById("nextPage");
             const checkOut = document.querySelector("#cart");
             const resizeHandler = () => {
-                if (window.innerWidth > 500) {
+                if (window.innerWidth > 576) {
                     menu.style.display = 'flex';
                 } else {
                     menu.style.display = 'none';
@@ -69,7 +69,7 @@
             };
 
             const loadHandler = () => {
-                if (window.innerWidth > 500) {
+                if (window.innerWidth > 576) {
                     menu.style.display = 'flex';
                 } else {
                     menu.style.display = 'none';
@@ -77,14 +77,14 @@
             };
             
             function handleClick() {
-            if (menu.style.display === 'none' || window.innerWidth>500) {
+            if (menu.style.display === 'none' || window.innerWidth>576) {
                 menu.style.display = 'flex';
             } else {
                 menu.style.display = 'none';
             }
             }
             function handleClickForBtn() {
-            if (menu.style.display === 'none' || window.innerWidth>500) {
+            if (menu.style.display === 'none' || window.innerWidth>576) {
                 menu.style.display = 'flex';
             } else {
                 menu.style.display = 'none';
