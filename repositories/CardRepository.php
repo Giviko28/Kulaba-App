@@ -28,7 +28,8 @@ class CardRepository {
         $sql = "SELECT * FROM cards";
         $stmt = $this->db->prepare($sql);
         if($stmt){
-           $result = $stmt->execute()->get_result();
+           $stmt->execute();
+           $result = $stmt->get_result();
            $cards = [];
            while($row = $result->fetch_assoc()){
                 $card = new Card(

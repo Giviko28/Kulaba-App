@@ -1,32 +1,60 @@
-<?php include "header.php"; ?>
+<?php 
+include "header.php"; 
+require_once "models/user.php";
+require_once "repositories/UserRepository.php";
+if(!isset($_SESSION["userid"])){
+    header("Location: signup.php");
+    exit();
+}
+?>
 <link rel="stylesheet" href="cssfolder/profile.css">
-
 <main>
-    <section class="description">
-        <div class="descbox">
-            <div>
-            <h2>ზედმეტსახელი:</h2>
-            <p><?php echo $_SESSION["userUid"] ?> </p>
+    <div class = "content">
+        <p>ანგარიში</p>
+        <div class = "description">
+            <div class = "detailsRoot">
+                <img src="images/defaultPic.png" alt="">
+                <div class =  "details">
+                    <h2>გამარჯობა, <?php echo $_SESSION["username"]?></h2>
+                    <p><?php echo $_SESSION["usermail"] ?></p>
+                </div>
             </div>
-            <div>
-            <h2>სახელი:</h2>
-            <p><?php echo $_SESSION["username"] ?></p>
-            </div>
-            <div>
-            <h2>ქოინები:</h2>
-            <p><?php echo $_SESSION["balance"] ?></p>
+
+            <div class ="detailsRoot2">
+                <div class = "savings">
+                    <h3>დანაზოგი</h3>
+                    <p>₾0.00</p>
+                </div>
+
+                <div class = "balance">
+                    <h3>ბალანსი</h3>
+                    <p>J0.00</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section class="myVouchers">
-        <h1>აქტიური ვაუჩერები</h1>
-        <div class="activeVouchers">
-
+        <div class = "settingsNav">
+            <div>
+                <div><img src="images/Screenshot_43.png" alt=""></div>
+                <a href="">ჩემი შეთავაზებები ></a>
+                <p>შეიძინე შეთავაზებები და იხილე აქ</p>
+            </div>
+            <div>
+                <div><img src="images/Screenshot_44.png" alt=""></div>
+                <a href="">პროფილი ></a>
+                <p>ჩაასწორე ან იხილე შენი პროფილი</p>
+            </div>
+            <div>
+                <div><img src="images/Screenshot_45.png" alt=""></div>
+                <a href="">გადახდის მეთოდი ></a>
+                <p>დაამატე ან გააუქმე ბარათი</p>
+            </div>
         </div>
-    </section>
 
+    </div>
 </main>
 
+<script>
+</script>
 
 <?php include "footer.php" ?>

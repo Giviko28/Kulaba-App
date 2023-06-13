@@ -48,7 +48,7 @@
                 }
             } else {
                 echo '
-                <form class="upload" method="POST" action="includes/uploadTest.php" enctype="multipart/form-data">
+                <form class="upload" method="POST" action="includes/uploadCard.php" enctype="multipart/form-data">
                     <input type="text" name="name" placeholder="რესტორანის სახელი:">
                     <input type="text" name="desc" placeholder="მოკლე აღწერა">
                     <input type="number" min="0" max="1000" name="price" placeholder="ფასი">

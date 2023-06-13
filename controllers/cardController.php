@@ -31,8 +31,10 @@ class CardController {
                 $errors[] = "Img must be a JPEG";
             }
         }
-        echo json_encode($errors);
-        return;
+        if(!empty($errors)){
+            echo json_encode($errors);
+            return;
+        }
 
         $card = new Card($image, $restaurantName, $shortDesc, $price, $usersid, $category_id, $real_price, $sales_price);
     

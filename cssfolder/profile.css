@@ -1,44 +1,131 @@
+* {
+    margin: 0;
+}
 main {
-    display: flex;
-    height: 70vh;
+    height: auto;
     width: 100%;
-    padding-top: 5vh;
+    padding: 3% 25% 0% 25%;
+}
+main img {
+    height: 72px;
+    width: 72px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.content p:first-child {
+    font-size: 40px;
+    font-weight: 500;
+    color: rgb(50, 50, 50);
+    line-height: 1.4;
+    margin: 0;
 }
 .description {
-    height: 70vh;
-    width: 50%;
+    background-color: #741FA2;
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    padding: 1.5em;
+    margin: 1em 0px;
+    border-radius: 12px;
+    box-shadow: rgba(50, 50, 50, 0.6) 0px 5px 10px -7px;
 }
-.description .descbox {
-    height: 70vh;
-    width: 50%;
+.details {
+    margin-left: 1.5%;
+}
+.detailsRoot {
+    display: flex;
+    width: 60%;
+}
+.detailsRoot2 {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.details h2 {
+    font-size: 1.5em;
+    margin: 8px 0px 4px;
+    white-space: nowrap;
+}
+.details p {
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: normal;
+    white-space: nowrap;
+    line-height: 1.3;
+}
+.savings h3, .balance h3 {
+    font-size: 0.85em;
+    font-weight: 700;
+}
+.savings p, .balance p {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.settingsNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.settingsNav > div {
+    background-color: white;
+    box-shadow: rgb(226, 226, 226) 0px 5px 10px -7px;
+    border-radius: 12px;
+    padding: 1em 0.85em;
+    width: 32%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-radius: 10px;
-    
+    border:1px solid rgb(224, 224, 224);
 }
-.descbox div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.settingsNav div a {
+    font-size: 0.85em;
+    color: #741FA2;
+    font-weight: bold;
+    line-height: 1.7;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+
 }
-.descbox div p {
-    font-size: 20px;
+.settingsNav div p {
+    font-size: 0.85em;
+    margin: 5px 0px;
+    color: rgb(50, 50, 50);
 }
-.myVouchers {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+.settingsNav div div {
+    margin-bottom: 1em;
 }
-.myVouchers h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.settingsNav div div img {
+    height: 55px;
+    width: 70px;
+}
+
+@media screen and (max-width:576px){
+    main{
+        padding: 3% 5%;
+    }
+    .description {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .detailsRoot2 {
+        justify-content: flex-start;
+        margin-top: 2%;
+    }
+    .detailsRoot2 .balance {
+        margin-left: 40%;
+    }
+    .savings p, .balance p {
+        font-size: 1.2em;
+    }
+    .settingsNav {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+    .settingsNav > div {
+        width: 100%;
+        margin-top: 3%;
+    }
 }
