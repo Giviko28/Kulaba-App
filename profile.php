@@ -49,6 +49,17 @@ if(!isset($_SESSION["userid"])){
                 <a href="">გადახდის მეთოდი ></a>
                 <p>დაამატე ან გააუქმე ბარათი</p>
             </div>
+            <?php 
+            if(checkCardPrivilige($conn, $_SESSION["userid"])){
+            echo '
+            <div>
+                <div><img src="images/Screenshot_45.png" alt=""></div>
+                <a href="">გადახდის მეთოდი ></a>
+                <p>დაამატე ან გააუქმე ბარათი</p>
+            </div>
+            ';
+            }
+            ?>
         </div>
 
     </div>
