@@ -129,7 +129,10 @@ footer {
         height: 7vh;
         width: 7vh;
         right: 0
-    };
+    }
+    footer {
+        position: relative;
+    }
     
 }
 

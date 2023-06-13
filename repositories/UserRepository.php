@@ -64,4 +64,21 @@ class UserRepository {
         $answers = array($real_price, $sales_price);
         return $answers;
     }
+    public function UserExists($username, $email){
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?");
+        $stmt->bind_param("ss", $username, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            return $result;
+        } else {
+            return false;
+        }
+    }
+    public function save(User $user) {
+        $stmt = $this->db->prepare("INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, coins)
+        VALUES (?,?,?,?,?)");
+        $stmt->bind_param("ssssi", $user->getUsersName(), $user->getUsersEMail(), $user->getUsersUid(), $user->getUsersPwd(), $user->getCoins());
+        $stmt->execute();
+    }
 }

@@ -1,5 +1,28 @@
 <?php
+require_once "dbh.inc.php";
+require_once "functions.inc.php";
+require_once "../models/user.php";
+require_once "../repositories/UserRepository.php";
+require_once "../controllers/userController.php";
+if(isset($_POST["submit"])){
+    
+    $userRepository = new UserRepository($conn);
+    $userController = new UserController($userRepository);
+    if($userController->CreateUser()){
+        echo "რეგისტრაცია წარმატებით დასრულდა";
+        header("Location: ../login.php");
+    } else {
+        echo "შეცდომა";
+        header("Location: ../login.php");
+    }
+    exit();
+} else {
+    echo "Wrong way";
+    exit();
+}
 
+
+/*
 if (isset($_POST["submit"])){
 
     require_once "dbh.inc.php";
@@ -38,3 +61,5 @@ if (isset($_POST["submit"])){
     header("Location: ../signup.php");
     exit;
 }
+
+*/

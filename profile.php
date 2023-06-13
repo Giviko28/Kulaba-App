@@ -28,10 +28,9 @@ $_SESSION["saved"] = $savings[0] - $savings[1];
                     <h3>დანაზოგი</h3>
                     <p>₾<?php echo $_SESSION["saved"] ?></p>
                 </div>
-
                 <div class = "balance">
                     <h3>ბალანსი</h3>
-                    <p>J0.00</p>
+                    <p>J<?php echo $_SESSION["balance"] ?></p>
                 </div>
             </div>
         </div>

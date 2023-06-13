@@ -8,8 +8,7 @@ class User {
     private $usersPwd;
     private $coins;
 
-    public function __construct($id, $usersname, $usersEmail, $usersUid, $usersPwd, $coins){
-        $this->id = $id;
+    public function __construct($usersname, $usersEmail, $usersUid, $usersPwd, $coins){
         $this->usersname = $usersname;
         $this->usersEmail = $usersEmail;
         $this->usersUid = $usersUid;

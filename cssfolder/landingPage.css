@@ -204,9 +204,12 @@ main {
     font-size: 15px;
   }
   
-  @media screen and (max-width:1100px) {
+  @media screen and (max-width:1024px) {
     main {
         padding: 2vh 4vh 0vh;
+    }
+    .slideshow, .slideshow img {
+      height: 25vh;
     }
 }
 @media screen and (max-width:576px) {
@@ -226,5 +229,8 @@ main {
     min-width: none;
     height: 325px;
     width: 400px;
+  }
+  .slideshow, .slideshow img {
+    height: 20vh;
   }
 }
