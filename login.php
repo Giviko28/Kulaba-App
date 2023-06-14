@@ -27,8 +27,6 @@
 </main>
 
 <script>
-    window.removeEventListener("resize", resizeHandler);
-    window.removeEventListener("load", loadHandler);
     const name = document.querySelector("#name");
     const pwd = document.querySelector("#pwd");
     const btn = document.querySelector("#btn");

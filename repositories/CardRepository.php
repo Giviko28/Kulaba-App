@@ -24,6 +24,32 @@ class CardRepository {
             exit();
         }
     }
+    public function getByDescription($description){
+        try {
+            $stmt = $this->db->prepare("SELECT * FROM cards WHERE shortDesc LIKE CONCAT('%', ?, '%')");
+            $stmt->bind_param("s", $description);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $cards = [];
+            while($row = $result->fetch_assoc()){
+                $card = array(
+                    "id" => $row["id"],
+                    "image" => base64_encode($row["image"]),
+                    "restaurantName" => $row["restaurantName"],
+                    "shortDesc" => $row["shortDesc"],
+                    "price" => $row["price"],
+                    "usersid" => $row["usersid"],
+                    "category_id" => $row["category_id"],
+                    "real_price" => $row["real_price"],
+                    "sales_price" =>$row["sales_price"]
+                );
+                $cards[] = $card;
+            }
+            return $cards;
+        } catch (Exception $e) {
+            die("An error occurred: " . $e->getMessage());
+        }
+    }
     public function getAll() {
         $sql = "SELECT * FROM cards";
         $stmt = $this->db->prepare($sql);

@@ -61,26 +61,52 @@ nav {
     align-items: center;
     background-color: #741FA2;
 }
+.tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0% 3%;
+}
+.tags a{
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+    padding: 0% 3%;
+    letter-spacing: .05em;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.userbox {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-left: 1%;
+}
+.user {
+    text-decoration: none;
+    color: white;
+    white-space: nowrap;
+    padding: 0% 1% 0% 1%;
+    letter-spacing: .05em;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0% 5% 0% 5%;
+}
+.bal {
+    margin-left: 5%;
+    padding: 8% 15%;
+    border: 1px solid white;
+    border-radius: 12px;
+}
+.bal:hover {
+    transition: box-shadow 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
 .wrapper h1 a {
     color: white;
     position: relative;
     left: 0;
     text-decoration: none;
-}
-.wrapper ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-.wrapper ul li a {
-    padding-right: 15px;
-    color: white;
-    text-decoration: none;
-    transition-duration: 0.2s;
-}
-.wrapper ul li a:hover {
-    font-size: 18px;
 }
 .wrapper .menuBtn {
     position: absolute;
@@ -91,7 +117,6 @@ nav {
     height: 7vh;
     width: 7vh;
 }
-
 footer {
     height: 5vh;
     display: flex;
@@ -101,29 +126,96 @@ footer {
     position: absolute;
     bottom: 0;
 }
-.misha {
-    max-height: 75vh;
-    max-width: 75vh;
-}   
+.searchDiv {
+    width: 40vh;
+    position: relative;
+    display: flex;
+}
+.searchDiv input {
+    width: 100%;
+    height: 35px;
+    padding-left: 24px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+.searchDiv img {
+    position: absolute;
+    color: white;
+    left: 5px;
+    top: 30%;
+    height:14px; 
+    width:14px;
+}
+.results {
+    max-height: 40vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10vh; /* Position below the search bar */
+    left: 20%;
+    width: 60%;
+    background-color: #fff; 
+    padding: 10px; 
+    display: none;
+    z-index: 10;
+    border-radius: 6px;
+}
+  
+.result a {
+    display: flex;
+    height: 80px;
+    justify-content: space-around;
+    align-items: center;
+}
+.result .resultPrices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.resultRealPrice {
+    text-decoration: line-through;
+    color: #777E90;
+    font-size: 14px;
+}
+.resultSalesPrice {
+    font-size: 18px;
+    color: #333333;
+}
+.result p {
+    white-space: nowrap;
+}
+.result img {
+
+    height: 100%;
+    width: 80px;
+}
+.mobileMenu {
+    left: 0;
+    position: absolute;
+    top: 10vh;
+    height: 90vh;
+    width: 100%;
+    z-index: 10;
+    background: #741FA2;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.mobileMenu a {
+    list-style: none;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: white;
+    margin-top: 5%;
+}
 @media screen and (max-width:576px){
+    .searchDiv {
+        display: none;
+    }
     .wrapper .menuBtn {
         display: inline;
-    }
-    .wrapper ul {
-        margin: 0;
-        padding: 0;
-        display: none;
-        flex-direction: column;
-        justify-content: flex-start;
-        position: absolute;
-        height: 100vh;
-        width: 100%;
-        background-color: #741FA2;
-        font-size: 25px;
-        top: 10vh;
-    }
-    .wrapper li {
-        padding-top: 25px;
     }
     .cart {
         height: 7vh;
@@ -133,6 +225,32 @@ footer {
     footer {
         position: relative;
     }
-    
 }
-
+@media screen and (max-width:1024px) and (min-width:768px){
+    .searchDiv {
+        width: 72vw;
+    }
+}
+@media screen and (max-width:768px) and (min-width:576px){
+    .searchDiv {
+        width: 67vw;
+    }
+    .wrapper {
+        padding-left: 5%;
+        justify-content: flex-start;
+    }
+}
+@media screen and (max-width:1024px){
+    .searchDiv {
+        margin-left: 3%;
+    }
+    .tags, .userbox {
+        display: none;
+    }
+    .wrapper .menuBtn {
+        display: inline;
+    }
+    .results {
+        width: 72%;
+    }
+}

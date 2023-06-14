@@ -1,0 +1,11 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 33.33%;
+    padding: 2.5rem;
+    margin-right: 1.25rem;
+}

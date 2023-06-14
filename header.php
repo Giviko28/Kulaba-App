@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="cssfolder/style.css">
 </head>
 <body>
+    <div class = "results" id="results"></div>
     <?php
     $cart ="
     <form id ='cart' action='checkoutPage.php' class = 'cart'>
@@ -29,76 +30,155 @@
     <nav>
         <div class ="wrapper">
             <h1><a href="landingPage.php">KULABA</a></h1>
-            <ul id ="menu">
-                <li><a href="landingPage.php">Home</a></li>
-                <?php if (isset($_SESSION["userid"]))
-                echo '<li id="nextPage"><a href="tasks.php">Tasks</a></li>';
-                ?>
-                <li><a href="info.php">Info</a></li>
-                <?php
-                    if (isset($_SESSION["userid"])) {
-                      echo  "<li id='nextPage'><a href='profile.php'>Profile</a></li>";
-                      if(checkCardPrivilige($conn, $_SESSION["userid"])){
-                        echo "<li id='nextPage'><a href='uploadPage.php'>Upload Card</a></li>";
-                      }
-                      if(checkTaskPrivilige($conn, $_SESSION["userid"])){
-                        echo "<li id='nextPage'><a href='uploadTaskPage.php'>Upload Task</a></li>";
-                      }
-                      echo  "<li id='nextPage'><a href='includes/logout.inc.php'>Log Out</a></li>";
-                    } else {
-                        echo "<li id='nextPage'><a href='signup.php'>Sign Up</a></li>";
-                        echo "<li id='nextPage'><a href='login.php'>Log In</a></li>";
-                    }
-                ?>
-            </ul>
+            <div  class = "tags">
+                <a href="index.php">TOP შეთავაზებები</a>
+                <a href="tasks.php">კითხვარები</a>
+                <a href="includes/logout.inc.php">ინფო</a>
+            </div>
+            <div class = "searchDiv">
+                <img src="images/search-icon.png" alt="">
+                <input id = "search" type="text" name = "search" placeholder = "მოძებნე სასურველი შეთავაზება">
+            </div>
+            <div class = "userbox">
+            <?php
+                if(isset($_SESSION["userid"])){
+                    echo "<a class ='user' href='profile.php'>".$_SESSION["username"]."</a>";
+                    echo "<a class ='user bal' href='profile.php'>J".$_SESSION["balance"].".00</a>";
+                } else {
+                    echo "<a class ='user' href='login.php'>შესვლა</a>";
+                    echo "<a class ='user' href='login.php'>რეგისტრაცია</a>";
+                }
+            ?>
+        </div>
             <a class ="menuBtn" id = "menuButton"><img src="images/mnu.jpg"></a>
+        
+        <div id = "menu" class="mobileMenu">
+            <hr style = "border-color:white; margin-top:1%;">
+                <a id = 'nextPage' href="landingPage.php">მთავარი გვერდი</a>
+                <?php
+                if(isset($_SESSION["userid"])){
+                echo "<a id = 'nextPage' href='profile.php'>პროფილი</a>";
+                } else {
+                echo "<a id ='nextPage' href='profile.php'>მთავარი გვერდი</a>";
+                }
+                ?>
+                <a href="index.php">შეთავაზებები</a>
+                <a href="tasks.php">კითხვარები</a>
+                <?php
+                if(isset($_SESSION["userid"])){
+                echo "<a href='includes/logout.inc.php'>გასვლა</a>";
+                } else {
+                    echo "<a href='login.php'>შესვლა</a>";
+                    echo "<a href='signup.php'>რეგისტრაცია</a>";
+                }
+                ?>
+        </div>
 
         </div>
         </nav>
         <script>
+            const search = document.querySelector("#search");
+            const resultsContainer = document.querySelector("#results");
+            function fetchCards(description){
+                let http = new XMLHttpRequest();
+                http.onreadystatechange = function(){
+                    if(this.readyState === 4 && this.status === 200){
+                        resultsContainer.innerHTML = "";
+                        resultsContainer.style.display = "flex";
+                        let cards = JSON.parse(this.responseText);
+                        if(this.responseText.length === 2){
+                            resultsContainer.innerHTML = "შედეგი არ მოიძებნა";
+                        }
+                        cards.forEach((card)=>{
+                            const div = document.createElement("div");
+                            div.classList.add("result");
+                            const link = document.createElement("a");
+                            link.href = "productPage.php?cardId=" + card.id;
+                            link.style.textDecoration = "none";
+                            link.style.color = "inherit";
+                            link.addEventListener("click", function(event) {
+                                event.stopPropagation(); // Prevents the click event from bubbling up to the div
+                            });
+
+                            const img = document.createElement("img");
+                            img.src = "data:image/png;base64," + card.image;
+                            link.appendChild(img);
+
+                            const nameParagraph = document.createElement("p");
+                            nameParagraph.textContent = card.restaurantName;
+                            link.appendChild(nameParagraph);
+
+                            const descDiv = document.createElement("div");
+                            descDiv.classList.add("resultPrices");
+
+                            const descParagraph = document.createElement("p");
+                            descParagraph.classList.add("resultSalesPrice")
+                            descParagraph.textContent = card.sales_price+"₾";
+                            descDiv.appendChild(descParagraph);
+
+                            const priceParagraph = document.createElement("p");
+                            priceParagraph.classList.add("resultRealPrice")
+                            priceParagraph.textContent = card.real_price+"₾";
+                            descDiv.appendChild(priceParagraph);
+                            
+                            link.appendChild(descDiv);
+
+                            div.appendChild(link);
+                            resultsContainer.appendChild(div);
+                        })
+                    }
+                }
+                http.open("GET", "includes/search.inc.php?desc=" + description, true);
+                http.send();
+            }
+            search.addEventListener("keyup", () => {
+                if(search.value.trim() === ""){
+                    resultsContainer.innerHTML = "";
+                    resultsContainer.style.display = "none";
+                    return;
+                }
+                fetchCards(search.value);
+            });
+            search.addEventListener("blur", ()=>{
+                blurTimeout = setTimeout(() => {
+                resultsContainer.innerHTML = "";
+                resultsContainer.style.display = "none";
+            }, 150);
+            });
+            search.addEventListener("focus", ()=>{
+                if(search.value.trim() != ""){
+                fetchCards(search.value);
+                }
+            });
+
+        </script>
+        <script>
             const menuButton = document.getElementById('menuButton');
             const menu = document.getElementById('menu');
-            const nextPage = document.getElementById("nextPage");
+            const nextPage = document.querySelectorAll("nextPage");
             const checkOut = document.querySelector("#cart");
-            const resizeHandler = () => {
-                if (window.innerWidth > 576) {
-                    menu.style.display = 'flex';
-                } else {
-                    menu.style.display = 'none';
-                }
-            };
-
-            const loadHandler = () => {
-                if (window.innerWidth > 576) {
-                    menu.style.display = 'flex';
-                } else {
-                    menu.style.display = 'none';
-                }
-            };
             
-            function handleClick() {
-            if (menu.style.display === 'none' || window.innerWidth>576) {
-                menu.style.display = 'flex';
-            } else {
-                menu.style.display = 'none';
-            }
-            }
-            function handleClickForBtn() {
-            if (menu.style.display === 'none' || window.innerWidth>576) {
-                menu.style.display = 'flex';
-            } else {
-                menu.style.display = 'none';
-            }
-
-            }
             checkOut.addEventListener('click', function(){
                 let form = this.closest("form");
                 if(form) {
                     form.submit();
                 }
             });
-            window.addEventListener('resize', resizeHandler);
-            window.addEventListener('load', loadHandler);
-            nextPage.addEventListener('click', handleClick);
-            menuButton.addEventListener('click', handleClickForBtn);
+            
+            menuButton.addEventListener("click", ()=>{
+                if(menu.style.display === "none"){
+                    menu.style.display = "flex";
+                } else {
+                    menu.style.display = "none";
+                }
+            });
+           window.addEventListener('resize', () =>{
+            if(window.innerWidth > 1024){
+                menu.style.display = "none";
+            }
+           })
+           window.addEventListener('load', () =>{
+                menu.style.display = "none";
+           })
+
         </script>

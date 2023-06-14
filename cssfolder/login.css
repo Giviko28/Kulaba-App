@@ -1,4 +1,4 @@
-.wrapper ul {
+.tags, .user, .searchDiv {
     display: none;
 }
 .backGround {
@@ -146,5 +146,11 @@ color: rgb(112, 112, 112);
     }
     .login form {
         height: 60vh;
+    }
+}
+@media screen and (max-width:1024px){
+    .wrapper {
+        padding: 0;
+        justify-content: center;
     }
 }

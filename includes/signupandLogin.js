@@ -1,6 +1,3 @@
-window.removeEventListener("resize", resizeHandler);
-window.removeEventListener("load", loadHandler);
-
 const signUpForm = document.querySelector("#signupForm");
 let symbolPattern = /[\W_]/;
 let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
