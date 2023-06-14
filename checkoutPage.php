@@ -39,7 +39,7 @@ echo '
 
                 document.querySelector("#real").innerHTML = response["realPrice"] + "GEL";
                 document.querySelector("#sale").innerHTML = response["salesPrice"] + "GEL";
-                document.querySelector("#total").innerHTML = response["coinPrice"];
+                document.querySelector("#total").innerHTML = "J" + response["coinPrice"];
                 document.querySelector("#saved").innerHTML = response["totalPrice"] + "GEL";
             }
         }

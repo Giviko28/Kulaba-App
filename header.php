@@ -33,7 +33,7 @@
             <div  class = "tags">
                 <a href="index.php">TOP შეთავაზებები</a>
                 <a href="tasks.php">კითხვარები</a>
-                <a href="includes/logout.inc.php">ინფო</a>
+                <a href="info.php">ინფო</a>
             </div>
             <div class = "searchDiv">
                 <img src="images/search-icon.png" alt="">

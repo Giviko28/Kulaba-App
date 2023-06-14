@@ -1,6 +1,8 @@
 <?php include "header.php" ?>
 <link rel="stylesheet" href="cssfolder/tasks.css">
 <main>
+    <h1>კითხვარები</h1>
+<div>
 <?php
 if(isset($_SESSION["userid"])){
 
@@ -12,6 +14,9 @@ if ($stmt) {
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
         $surveyId = $row["id"];
+        $prize = $row["coins"];
+        $name = $row["survey_name"];
+        $image = $row["image"];
         $sqlQuestions = "SELECT * FROM survey_questions WHERE survey_id = ?";
         $stmtQuestions = $conn->prepare($sqlQuestions);
         if ($stmtQuestions) {
@@ -27,11 +32,16 @@ if ($stmt) {
                     $resultResp = $stmtResponses->get_result();
                     if ($resultResp->num_rows === 0) {
                         echo "
-                        <form action='survey.php' method='POST'>
-                            <img src='images/surv.png' alt=''>
-                            <input type='hidden' name='survey_id' value='$surveyId'>
-                            <input type='submit' name='submit' value='Take survey'>
-                        </form>
+                        <a href ='survey.php?survey_id=".$surveyId."'>
+                            <div class = 'survey'>
+                                <div class = 'surveyDetails'>
+                                    <h2>".$name."</h2>
+                                    <span>".$prize." ჯიზია</span>
+                                </div>
+                                <img src='data:image/jpeg;base64," . base64_encode($image) . "'' alt=''>
+                                <img class ='arrow' src='images/arrow.png' alt=''>
+                            </div>
+                        </a>
                         ";
                     }
                     $stmtResponses->close();
@@ -53,6 +63,13 @@ if ($stmt) {
     exit();
 }
 ?>
+</div>
 </main>
 
+
+<script>
+    function submitForm() {
+        document.getElementById("myForm").submit();
+    }
+</script>
 <?php include "footer.php" ?>

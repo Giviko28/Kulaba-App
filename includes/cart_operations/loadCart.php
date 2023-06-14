@@ -47,7 +47,7 @@ if(isset($_SESSION["cart"])){
             </div>
             <div>
                 <p>ქოინური ფასი</p>
-                <p id = 'total'>$totalCoinPrice</p>
+                <p id = 'total'>J$totalCoinPrice</p>
             </div>
             <div>
                 <p>დაზოგილი თანხა</p>

@@ -2,7 +2,6 @@
 
 <link rel="stylesheet" href="cssfolder/uploadTaskPage.css">
 <main>
-
     <div class = "left">
         <?php 
             if(!($_SERVER["REQUEST_METHOD"] == "POST")){
@@ -13,9 +12,10 @@
                 ';
             } else {
                 echo '
-                <form action="includes/taskValidation.php" method="post">
+                <form action="includes/taskValidation.php" method="post" enctype="multipart/form-data">
                     <input type="text" name="name" placeholder = "კითხვარის სახელი">
                     <input type="number" min="0" max="1000" name="prize" placeholder = "პრიზი ქოინის სახით">
+                    <input type="file" name="img" >
                     <input type="submit" name="submit" value="შედგენა">
                 </form>
                 ';

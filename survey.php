@@ -26,8 +26,8 @@
 echo '<form action="includes/surveyValidation.php" method = "POST">';
 
 $rowCount = 0;
-if(isset($_POST["submit"])) {
-    $surveyId = $_POST["survey_id"];
+if(isset($_GET["survey_id"])) {
+    $surveyId = $_GET["survey_id"];
     $sql = "SELECT * FROM survey_questions WHERE survey_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $surveyId);

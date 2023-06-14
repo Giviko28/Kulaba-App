@@ -6,6 +6,7 @@ if (isset($_GET["cardId"])) {
     $card = getCardById($conn, $id);
     $img = $card["image"];
     $desc = $card["shortDesc"];
+    $name = $card["restaurantName"];
     $realPrice = "GEL".$card["real_price"]." ₾";
     $salesPrice = "GEL".$card["sales_price"]." ₾";
     $salesPercent = round((1-($card["sales_price"]/$card["real_price"]))*100, 0)."%";
@@ -34,7 +35,7 @@ if (isset($_GET["cardId"])) {
         <p class = "oldPrice">'. $realPrice .'</p>
         <p class="salePercent">('.$salesPercent.')</p>
         </div>
-        <p class ="rating">მარაბელი ★★★★★</p>
+        <p class ="rating">'.$name.' ★★★★★</p>
         <p class="desc">'. $desc .'</p>
         <div>
             <button onclick = "addToCart('.$id.')">კალათაში დამატება</button>

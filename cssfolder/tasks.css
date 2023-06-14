@@ -1,12 +1,71 @@
 main {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-}
-main form {
-    height: 30vh;
-    width: 20vh;
-    display: flex;
     flex-direction: column;
-    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+main > h1 {
+    margin: 1.5% 0% 0.5% 0%;
+    color: #2C2F35;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+main div {
+    display: flex;
+    gap: 1em;
+    padding: 1% 1%;
+}
+.survey {
+    position: relative;
+    display: flex;
+    width:  24vw;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0% 2.3%;
+    border-radius: 28px;
+}
+a {
+    border-radius: 28px;
+}
+a:hover {
+    transition-duration: 0.3s;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+a:hover .arrow {
+    transition-duration: 0.5s;
+    opacity: 0.85;
+    width: 36%;
+}
+.survey > div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.625rem 2.25rem 0.625rem 0.625rem;
+    max-width: calc(100% - 9.375rem);
+    min-width: 60%;
+}
+.survey > div h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2C2F35;
+}
+.survey > div span {
+    margin-left:.125em;
+    color: #848C90;
+}
+a {
+    text-decoration: none;
+}
+.survey img {
+    height: 90%;
+    width: 100%;
+    border-radius: 28px;
+}
+.arrow {
+    position: absolute;
+    right:1.5%;
+    opacity: 0;
 }
