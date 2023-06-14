@@ -30,7 +30,7 @@ p a{
     margin-top: 1vh;
 }
 .messages span {
-    font-size: 12px;
+    font-size: 0.8rem;
     padding: 0.2vh 0vh;
     color:  #323232;
 }
@@ -46,6 +46,7 @@ p a{
 }
 .box form {
     height: 50vh;
+    width: 95%;
     display: flex;
     flex-direction: column;
     padding: 0vh 2vh 2vh 2vh
@@ -86,7 +87,7 @@ p a{
     flex-direction: column;
     padding: 0.5vh 0vh;
 }
-@media screen and (max-width:800px) {
+@media screen and (max-width:768px) {
     .backGround {
         display: none;
     }

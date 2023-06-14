@@ -36,7 +36,7 @@
                 ?>
                 <li><a href="info.php">Info</a></li>
                 <?php
-                    if (isset($_SESSION["userUid"])) {
+                    if (isset($_SESSION["userid"])) {
                       echo  "<li id='nextPage'><a href='profile.php'>Profile</a></li>";
                       if(checkCardPrivilige($conn, $_SESSION["userid"])){
                         echo "<li id='nextPage'><a href='uploadPage.php'>Upload Card</a></li>";

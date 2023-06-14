@@ -1,5 +1,5 @@
 <?php
-require_once "../includes/functions.inc.php";
+// require_once "../includes/functions.inc.php";
 class UserController {
     private $UserRepository;
 
@@ -38,5 +38,33 @@ class UserController {
         $user = new User($name,$email, $username, $hashedPwd, 0);
         $this->UserRepository->save($user);
         return true;
+    }
+    public function LoginUser() {
+        $username = $_POST["name"];
+        $pwd = $_POST["pwd"];
+        $user = $this->UserRepository->UserExists($username, $username);
+        if(!$user){
+            return "არ არსებობს მომხმარებელი";
+        }
+        if(password_verify($pwd, $user["usersPwd"])){
+            $logged_user = new User(
+                $user["usersName"],
+                $user["usersEmail"],
+                $user["usersUid"],
+                $user["usersPwd"],
+                $user["coins"]
+            );
+            $_SESSION["userid"] = $user["usersId"];
+            $_SESSION["username"] = $user["usersName"];
+            $_SESSION["usermail"] = $user["usersEmail"];
+            $_SESSION["userUid"] = $user["usersUid"];
+            $_SESSION["balance"] = $user["coins"];
+            $_SESSION["user"] = serialize($logged_user);
+            $_SESSION["cart"] = checkCart($this->UserRepository->getDB(), $user["usersId"]);
+            return "თქვენ წარმატებით გაიარეთ ავტორიზაცია";
+        } else {
+            return "პაროლი ან იმეილი არასწორია";
+        }
+        
     }
 }

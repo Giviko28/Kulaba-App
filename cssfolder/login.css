@@ -1,0 +1,150 @@
+.wrapper ul {
+    display: none;
+}
+.backGround {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h2 {
+    color: #323232;
+}
+p {
+    font-size: 14px;
+    color: #323232;
+}
+p a{
+    color:#741FA2;
+    line-height: 1.25;
+    font-size: 14px;
+}
+.login {
+    height: 60vh;
+    width: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    box-sizing: border-box;
+}
+.login form {
+    height: 50vh;
+    width: 86%;
+    display: flex;
+    flex-direction: column;
+}
+.login form input {
+    padding: 1vh;
+}
+.login form a {
+    display: block;
+    text-align: center;
+    color: rgb(50, 50, 50);
+    font-size: 0.85em;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    margin: 1rem 0px;
+}
+.login form label {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.5;
+    color: rgb(50, 50, 50);
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+}
+.or-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0;
+}
+
+.line {
+flex-grow: 1;
+height: 1px;
+background-color: rgb(224, 224, 224);
+}
+
+.or-text {
+padding: 0px 1em;
+font-weight: bold;
+color: rgb(112, 112, 112);
+}
+.login form button {
+    margin-top: 4%;
+    padding: 12px 32px;
+}
+.login form .inActiveBtn {
+    cursor: not-allowed;
+    height: 44px !important;
+    border-radius: 24px;
+    border-style: none;
+    color:#707070;
+    font-weight: bold;
+    background-color: #E0E0E0;
+    transition-duration: 0.2s;
+}
+.login form .activeBtn {
+    cursor: pointer;
+    height: 44px !important;
+    border-radius: 24px;
+    border-style: none;
+    color: white;
+    background-color: #741FA2;
+    font-weight: bold;
+    margin-top: 1vh;
+    transition-duration: 0.2s;
+}
+.connectParent {
+    margin-top: 5%;
+}
+.connect {
+    position: relative;
+    border:1px solid rgb(176, 176, 176);
+    border-radius: 2em;
+    color: rgb(50, 50, 50);
+    min-width: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:  1em 0.75em;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    cursor: pointer;
+}
+.connect img {
+    position: absolute;
+    left: 4%;
+    height: 24px;
+    width: 24px;
+}
+@media screen and (max-width:768px) {
+    .backGround {
+        display: none;
+    }
+    .login form button {
+        margin-top: 4%;
+        padding: 8px 32px;
+    }
+}
+@media screen and (max-height:820px) {
+    .login {
+        height: 65vh;
+    }
+    .login form {
+        height: 60vh;
+    }
+}

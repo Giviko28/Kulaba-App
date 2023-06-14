@@ -16,7 +16,7 @@
         <button onclick = "plusSlides(-1)" class="prev"><</button>
         <button onclick = "plusSlides(1)" class="next">></button>
     </div>
-
+    
     <div class="categories">
         <div class="category">
             <div class = "text">

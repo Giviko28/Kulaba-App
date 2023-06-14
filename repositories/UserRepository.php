@@ -7,6 +7,9 @@ class UserRepository {
         $this->db = $db;
     }
 
+    public function getDB(){
+        return $this->db;
+    }
     public function getUser($id) {
         $sql = "SELECT * FROM users WHERE usersid = ?";
         $stmt = $this->db->prepare($sql);
@@ -70,7 +73,7 @@ class UserRepository {
         $stmt->execute();
         $result = $stmt->get_result();
         if($result->num_rows > 0){
-            return $result;
+            return $result->fetch_assoc();
         } else {
             return false;
         }

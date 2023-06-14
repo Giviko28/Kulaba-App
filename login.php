@@ -1,37 +1,45 @@
-<?php include "header.php";
-
-/* es komentari moshale tu misha mogbezrda, komentari daemata testirebis miznit
-if (isset($_SESSION["userid"])) {
-    header("Location: index.php");
-    exit();
-}
-*/
-
-?>
-
-    <section class="sign-up">
-        <h2>Login</h2>
+<?php include "header.php";?>
+<link rel="stylesheet" href="cssfolder/login.css">
+<img src="images/signup.png" alt="" class="backGround">
+<main>
+    <h2>გაიარე ავტორიზაცია</h2>
+    <p>არ გაქვს ანგარიში? <a href="signup.php">Sign Up</a></p>
+    <section class="login">
         <form action="includes/login.inc.php" method="post">
-            <input type="text" name="name" placeholder = "Username/Email:">
-            <input type="password" name="pwd" placeholder = "Password:">
-            <button type="submit" name = "submit">Log In</button>
+            <label for="name">მეილი/იუზერი</label>
+            <input id = "name" type="text" name="name" placeholder = "მეილი/იუზერი:">
+            <label for="pwd">პაროლი</label>
+            <input id = "pwd" type="password" name="pwd" placeholder = "პაროლი:">
+            <button id ="btn" class = "inActiveBtn" type="submit" name = "submit">ავტორიზაცია</button>
+            <a href="">დაგავიწყდა პაროლი?</a>
+            <div class="or-container">
+                <div class="line"></div>
+                <div class="or-text">OR</div>
+                <div class="line"></div>
+            </div>
+            <div class = "connectParent">
+                <div class = "connect"><img src="images/facebook.png" alt="">შესვლა Facebook-ით</div>
+                <div class = "connect"><img src="images/Google.png" alt="">შესვლა Google-ით</div>
+                <div class = "connect"><img src="images/apple.png" alt="">შესვლა Apple-ით</div>
+            </div>
         </form>
-        <?php 
-    if (isset($_GET["error"])) {
-        if ($_GET["error"] == "emptyinput") {
-            echo "<p>Fill in all field </p>";
-        }
-        else if ($_GET["error"] == "wrongLogin") {
-            echo "<p>Invalid login credentials</p>";
-        }
-        else if ($_GET["error"] == "success") {
-            $username = $_SESSION["userUid"];
-            echo "<p style='color: red;' class = 'successMSG'>გამარჯობა აგენტო $username</p>";
-            echo '<img class ="misha" src="https://cdn.gweb.ge/buffer/1001663/pictures/fullsize/a4f9cd23eb3c5264c37dca61222d678e.jpg" alt="">';
-        }
-    }
-    ?>
     </section>
+</main>
 
-
+<script>
+    window.removeEventListener("resize", resizeHandler);
+    window.removeEventListener("load", loadHandler);
+    const name = document.querySelector("#name");
+    const pwd = document.querySelector("#pwd");
+    const btn = document.querySelector("#btn");
+    function isEmpty() {
+        if(name.value.trim().length <=0 || pwd.value.trim().length <=0){
+            btn.className = "inActiveBtn";
+            return;
+        }
+        btn.className = "activeBtn";
+    }
+    name.addEventListener("keyup", isEmpty);
+    pwd.addEventListener("keyup", isEmpty);
+</script>
 <?php include "footer.php" ?>

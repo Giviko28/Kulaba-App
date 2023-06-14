@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Jun 13, 2023 at 10:19 PM
+-- Generation Time: Jun 14, 2023 at 02:19 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -77,13 +77,6 @@ CREATE TABLE `cart` (
   `card_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `card_id`) VALUES
-(298, 6, 64);
-
 -- --------------------------------------------------------
 
 --
@@ -126,7 +119,8 @@ INSERT INTO `invoices` (`invoice_id`, `user_id`, `invoice_date`, `total`) VALUES
 (23, 6, '2023-06-13 18:35:49', 335),
 (24, 6, '2023-06-13 18:46:39', 350),
 (25, 6, '2023-06-13 20:13:51', 350),
-(26, 6, '2023-06-13 20:15:10', 684);
+(26, 6, '2023-06-13 20:15:10', 684),
+(27, 6, '2023-06-13 22:21:57', 33);
 
 -- --------------------------------------------------------
 
@@ -151,7 +145,8 @@ INSERT INTO `invoice_items` (`id`, `card_id`, `invoice_id`, `price`) VALUES
 (38, 59, 24, 350),
 (39, 59, 25, 350),
 (40, 58, 26, 351),
-(41, 56, 26, 333);
+(41, 56, 26, 333),
+(42, 60, 27, 33);
 
 -- --------------------------------------------------------
 
@@ -213,11 +208,11 @@ CREATE TABLE `surveys` (
 --
 
 INSERT INTO `surveys` (`id`, `survey_name`, `created_at`, `userid`, `coins`) VALUES
-(1, 'KulabaApp', '2023-05-25 19:28:33', 6, 300),
-(2, 'sur2', '2023-05-25 20:47:11', 3, 200),
-(3, 'sur3', '2023-05-25 20:47:30', 6, 1500),
-(4, 'KLEOBA', '2023-05-27 19:08:19', 6, 500),
-(5, 'cvetshi', '2023-05-27 19:24:11', 6, 300);
+(1, 'KulabaApp', '2023-05-25 15:28:33', 6, 300),
+(2, 'sur2', '2023-05-25 16:47:11', 3, 200),
+(3, 'sur3', '2023-05-25 16:47:30', 6, 1500),
+(4, 'KLEOBA', '2023-05-27 15:08:19', 6, 500),
+(5, 'cvetshi', '2023-05-27 15:24:11', 6, 300);
 
 -- --------------------------------------------------------
 
@@ -255,7 +250,7 @@ INSERT INTO `survey_questions` (`id`, `survey_id`, `question`) VALUES
 CREATE TABLE `survey_responses` (
   `id` int(11) NOT NULL,
   `survey_id` int(11) NOT NULL,
-  `participant_id` int(11) DEFAULT NULL,
+  `participant_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `response` int(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -266,9 +261,12 @@ CREATE TABLE `survey_responses` (
 --
 
 INSERT INTO `survey_responses` (`id`, `survey_id`, `participant_id`, `question_id`, `response`, `created_at`) VALUES
-(113, 3, 6, 9, 1, '2023-06-08 23:51:03'),
-(114, 3, 6, 6, 2, '2023-06-08 23:51:03'),
-(115, 3, 6, 11, 4, '2023-06-08 23:51:03');
+(1, 3, 6, 9, 1, '2023-06-14 12:18:37'),
+(2, 3, 6, 10, 3, '2023-06-14 12:18:37'),
+(3, 3, 6, 11, 1, '2023-06-14 12:18:37'),
+(4, 2, 6, 6, 1, '2023-06-14 12:18:45'),
+(5, 2, 6, 7, 3, '2023-06-14 12:18:45'),
+(6, 2, 6, 8, 4, '2023-06-14 12:18:45');
 
 -- --------------------------------------------------------
 
@@ -295,7 +293,7 @@ INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd
 (3, 'givijo', 'mamailala@gmail.com', 'shokabega420', '$2y$10$KyJDJljnHm49yacOrd.WH.MwJ/UIjbEdvaUANyvsZiUV/pHhYSiee', 0),
 (4, 'geve', 'maleo@gmail.com', 'givsona', '$2y$10$cJiHCTbqvO2ihVg2sC4y8OgfXZZnH2X0jro.Fzib7Cja9lKatisyu', 0),
 (5, 'Giviko', 'ylevar@gmail.com', 'givich', '$2y$10$OxcHWTsk0RbIoMr9aADi6ujJqoEORvNTYTu8YVWeD3YnMNPZe/qVm', 0),
-(6, 'Tamazi', 'givsonbei@gmail.com', 'Rioni', '$2y$10$BCLhrKLuY/uUg56irdGREux9H7vydfOp8pwciYENOwuG4pEpdz1YG', 5579),
+(6, 'Tamazi', 'givsonbei@gmail.com', 'Rioni', '$2y$10$BCLhrKLuY/uUg56irdGREux9H7vydfOp8pwciYENOwuG4pEpdz1YG', 7246),
 (7, 'Duke', 'dukearchibald@gmail.com', 'Enguri', '$2y$10$xUJUBe6i4rMETpZ1o/0R9Otw.XXNI2Jcm602sFDJAD2IQTuURepKa', 0),
 (8, 'nini', 'frodiprodi@gmail.com', 'Nincho', '$2y$10$CU8aI5giWHhECCp1uOg3UeaZkvbZAejPhO3ESchEkW4avGH5mGxOS', 0),
 (9, 'Givi', 'chelidze.givi@gmail.com', 'Givi', '$2y$10$VN.3yiWEGI.a.nqOwpnD6.NqxShRj1FBx7yD3cNP2TJ7.hZzey6Qe', 0),
@@ -312,7 +310,8 @@ INSERT INTO `users` (`usersId`, `usersName`, `usersEmail`, `usersUid`, `usersPwd
 (20, 'buxuti', 'malishka@gmail.com', 'buxuti', '$2y$10$bjw7S6URBr8GQ6Cwf4s5n.Til7YraB0kPnnm5kBdDr4L2xanxyXRm', 0),
 (21, 'makh1932103', 'ddadsddas@gmail.com', 'adsadasda', '$2y$10$aPFz6BPrxglZ1.pOF6.AQe2qagKn8t0lQ3KjvR221HRTADSHfFS9m', 0),
 (22, 'asdad', 'chelidze.g232ivia@gmail.com', 'Mwaawawwaa', '$2y$10$sn/k6rtlC1NmCkikCazX/uPo2ix6WCKdb7H4Rze0S51Ctv/RH2Uqi', 0),
-(23, 'asda', 'Aasdeaada@gmail.com', 'Masxhkhk', '$2y$10$8tJQnh2ZB6.vSZFqhVEQ3emZPzqaL3yHiYHJA/NHQQP4x3BF154e6', 0);
+(23, 'asda', 'Aasdeaada@gmail.com', 'Masxhkhk', '$2y$10$8tJQnh2ZB6.vSZFqhVEQ3emZPzqaL3yHiYHJA/NHQQP4x3BF154e6', 0),
+(24, 'asdadada', 'asdsa@gmail.com', 'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', '$2y$10$lQOzon22JjcGyCEg3X1B/OyqzJHOWZoGMzYOsrs2r.5zZcwbHjL2i', 0);
 
 --
 -- Indexes for dumped tables
@@ -368,23 +367,24 @@ ALTER TABLE `response_types`
 --
 ALTER TABLE `surveys`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_user_id` (`userid`);
+  ADD KEY `FK_USER_ID` (`userid`);
 
 --
 -- Indexes for table `survey_questions`
 --
 ALTER TABLE `survey_questions`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `survey_id` (`survey_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_SURVEY` (`survey_id`);
 
 --
 -- Indexes for table `survey_responses`
 --
 ALTER TABLE `survey_responses`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `response_fk` (`response`),
-  ADD KEY `FK_SURVEY` (`survey_id`),
-  ADD KEY `FK_QUESTION` (`question_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `survey_id` (`survey_id`),
+  ADD KEY `participant_id` (`participant_id`),
+  ADD KEY `question_id` (`question_id`),
+  ADD KEY `response` (`response`);
 
 --
 -- Indexes for table `users`
@@ -406,25 +406,19 @@ ALTER TABLE `cards`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=299;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `invoice_items`
 --
 ALTER TABLE `invoice_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT for table `surveys`
---
-ALTER TABLE `surveys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `survey_questions`
@@ -436,13 +430,13 @@ ALTER TABLE `survey_questions`
 -- AUTO_INCREMENT for table `survey_responses`
 --
 ALTER TABLE `survey_responses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -465,26 +459,22 @@ ALTER TABLE `invoice_items`
 -- Constraints for table `surveys`
 --
 ALTER TABLE `surveys`
-  ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`userid`) REFERENCES `users` (`usersId`);
+  ADD CONSTRAINT `FK_USER_ID` FOREIGN KEY (`userid`) REFERENCES `users` (`usersId`);
 
 --
 -- Constraints for table `survey_questions`
 --
 ALTER TABLE `survey_questions`
-  ADD CONSTRAINT `survey_questions_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`);
+  ADD CONSTRAINT `FK_SURVEY` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`);
 
 --
 -- Constraints for table `survey_responses`
 --
 ALTER TABLE `survey_responses`
-  ADD CONSTRAINT `FK_CONSTR` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`),
-  ADD CONSTRAINT `FK_QUESTION` FOREIGN KEY (`question_id`) REFERENCES `surveys_questions` (`id`),
-  ADD CONSTRAINT `FK_Questions` FOREIGN KEY (`question_id`) REFERENCES `survey_questions` (`id`),
-  ADD CONSTRAINT `FK_SURVEY` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`),
-  ADD CONSTRAINT `FK_Survey_Question` FOREIGN KEY (`survey_id`,`question_id`) REFERENCES `survey_questions` (`survey_id`, `id`),
-  ADD CONSTRAINT `response_fk` FOREIGN KEY (`response`) REFERENCES `response_types` (`id`),
   ADD CONSTRAINT `survey_responses_ibfk_1` FOREIGN KEY (`survey_id`) REFERENCES `surveys` (`id`),
-  ADD CONSTRAINT `survey_responses_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `survey_questions` (`id`);
+  ADD CONSTRAINT `survey_responses_ibfk_2` FOREIGN KEY (`participant_id`) REFERENCES `users` (`usersId`),
+  ADD CONSTRAINT `survey_responses_ibfk_3` FOREIGN KEY (`question_id`) REFERENCES `survey_questions` (`id`),
+  ADD CONSTRAINT `survey_responses_ibfk_4` FOREIGN KEY (`response`) REFERENCES `response_types` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
