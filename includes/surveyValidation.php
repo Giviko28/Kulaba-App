@@ -5,7 +5,6 @@ include "functions.inc.php";
 ?>
 <?php
 if (isset($_POST["submit"])) {
-
     $participantId = $_SESSION["userid"];
     $surveyid = $_POST["survey_id"];
     $answers = $_POST["answers"];
