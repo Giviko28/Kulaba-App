@@ -24,8 +24,8 @@ class CardController {
         if($imageInfo !== false){
             $imageType = $imageInfo[2];
             $imgSizeInKb = $_FILES["img"]["size"] / 1024;
-            if($imgSizeInKb > 62){
-                $errors[] = "Img size must be below 72";
+            if($imgSizeInKb > 256){
+                $errors[] = "Img size must be below 256";
             }
             if($imageType !== IMAGETYPE_JPEG){
                 $errors[] = "Img must be a JPEG";

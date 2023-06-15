@@ -51,7 +51,7 @@
                 <form class="upload" method="POST" action="includes/uploadCard.php" enctype="multipart/form-data">
                     <input type="text" name="name" placeholder="რესტორანის სახელი:">
                     <input type="text" name="desc" placeholder="მოკლე აღწერა">
-                    <input type="number" min="0" max="1000" name="price" placeholder="ფასი">
+                    <input type="number" min="0" max="10000" name="price" placeholder="ფასი">
                     <input type="number" min="0" max="1000" name="realprice" placeholder="რეალური ფასი">
                     <input type="number" min="0" max="1000" name="salesprice" placeholder="ფასდაკლებული ფასი">
                     <select name="category_id">

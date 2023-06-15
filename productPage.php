@@ -15,12 +15,12 @@ if (isset($_GET["cardId"])) {
     <div class ="left">
         <div class = "slideshow">
             <div class ="imgSideBar">
-                <img src="images/marabeli.jpg" alt="">
-                <img src="images/marabeli.jpg" alt="">
-                <img src="images/marabeli.jpg" alt="">
-                <img src="images/marabeli.jpg" alt="">
-                <img src="images/marabeli.jpg" alt="">
-                <img src="images/marabeli.jpg" alt="">
+            <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
             </div>
             <div class = "mainImg">
                 <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">

@@ -46,7 +46,7 @@
                     echo "<a class ='user bal' href='profile.php'>J".$_SESSION["balance"].".00</a>";
                 } else {
                     echo "<a class ='user' href='login.php'>შესვლა</a>";
-                    echo "<a class ='user' href='login.php'>რეგისტრაცია</a>";
+                    echo "<a class ='user' href='signup.php'>რეგისტრაცია</a>";
                 }
             ?>
         </div>

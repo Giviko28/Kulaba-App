@@ -56,7 +56,7 @@ $_SESSION["saved"] = $savings[0] - $savings[1];
             echo '
             <div>
                 <div><img src="images/Screenshot_45.png" alt=""></div>
-                <a href="">შეთავაზების დამატება></a>
+                <a href="uploadPage.php">შეთავაზების დამატება></a>
                 <p>დაეხმარე ხალხს დაზოგოს ფული</p>
             </div>
             ';
