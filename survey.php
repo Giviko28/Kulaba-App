@@ -57,7 +57,7 @@ if(isset($_GET["survey_id"])) {
 }
 
 echo "
-<input type='hidden' name ='survey_id' value = '{$_POST['survey_id']}'>
+<input type='hidden' name ='survey_id' value = '{$_GET['survey_id']}'>
 <button type ='submit' name = 'submit'>GO</button>
 </form>
 ";
