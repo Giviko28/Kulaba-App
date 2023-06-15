@@ -96,6 +96,26 @@ main {
 }
 @media (max-width:1200px) {
     main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: 4vh 10vh 0vh;
+    }
+    .left, .right {
+        width: 85%;
+    }
+    body {
+        min-height: 110vh;
+    }
+}
+@media screen and (max-width:576px){
+    main {
+        padding: 4vh 2vh 0vh;
+    }
+    .left, .right {
+        width: 100%;
+    }
+    body {
+        min-height: 110vh;
     }
 }
