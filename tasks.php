@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="cssfolder/tasks.css">
 <main>
     <h1>კითხვარები</h1>
-<div>
+<div class = 'rootdiv'>
 <?php
 if(isset($_SESSION["userid"])){
 

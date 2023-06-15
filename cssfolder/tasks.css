@@ -38,7 +38,7 @@ a:hover .arrow {
     opacity: 0.85;
     width: 36%;
 }
-.survey > div {
+.survey  div {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -63,9 +63,22 @@ a {
     height: 90%;
     width: 100%;
     border-radius: 28px;
+    max-height: 150px;
+    max-width: 150px;
 }
 .arrow {
     position: absolute;
     right:1.5%;
     opacity: 0;
+}
+
+@media screen and (max-width:576px){
+    .rootdiv {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+    .survey {
+        width: 100%;
+    }
 }
