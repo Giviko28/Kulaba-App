@@ -21,7 +21,7 @@ if(isset($_SESSION["cart"])){
         $totalSalesPrice += $salesPrice;
         $totalRealPrice += $realPrice;
         echo "
-        <div id = $arr[$i] class ='container'>
+        <div id = $arr[$i] class ='container $arr[$i]'>
             <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
         <div class = 'titles' >
             <p>$shortDesc</p>

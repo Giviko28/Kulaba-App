@@ -50,8 +50,7 @@ echo '
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState === 4 && this.status === 200){
-               document.getElementById(id).innerHTML = "";
-               document.getElementById(id).style.display = "none";
+               document.getElementById(id).remove();
                document.querySelector("#message").innerHTML = this.responseText;
                updatePrice();
             }

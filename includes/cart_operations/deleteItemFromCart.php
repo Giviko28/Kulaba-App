@@ -3,7 +3,7 @@ require "../dbh.inc.php";
 session_start();
 
 function deleteCard($conn, $id) {
-    $sql = "DELETE FROM cart WHERE card_id = ?";
+    $sql = "DELETE FROM cart WHERE card_id = ? LIMIT 1";
     try {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);

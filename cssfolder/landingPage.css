@@ -104,7 +104,6 @@ main {
 }
 
 .recent {
-    height: 60vh;
     min-width: 100%;
     margin-top: 4vh;
 }
@@ -113,7 +112,6 @@ main {
     justify-content: space-between;
 }
 .recent .recentCards {
-    height: 100%;
     width: 100%;
     padding-top: 1vh;
     display: flex;
