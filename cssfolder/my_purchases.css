@@ -27,18 +27,18 @@ main {
     overflow: hidden;
 }
 .left {
-    padding: 2.875rem 0px 2.125rem 1.875rem;
+    padding: 2.875rem 0 2.125rem 1.875rem;
     width: 70%;
     display: flex;
     justify-content: space-evenly;
 }
-.left h2, .left h1 {
-    font-size: 2.875rem;
+.left h2, .left h1, .right h2 {
+    font-size: clamp(2.1rem, 4vw, 2.875rem);
     color: #741FA2;
 }
 .left p {
     margin-top: 1px;
-    font-size: 1.25rem;
+    font-size: clamp(0.875rem, 4vw, 1.25rem);
     color: #741FA2;
 }
 .right {
@@ -52,7 +52,6 @@ main {
     padding-left: 1%;
 }
 .right h2 {
-    font-size: 2.875rem;
     font-weight: 700;
     color: white;
 }
@@ -107,6 +106,7 @@ main {
         width: 100%;
     }
     .left {
+        padding: 1.875rem 0 2.125rem 1.875rem;
         width: 100%;
     }
     .equals {

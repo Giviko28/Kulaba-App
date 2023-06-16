@@ -3,8 +3,7 @@
 }
 main {
     height: auto;
-    width: 100%;
-    padding: 3% 25% 0% 25%;
+    padding: 3% 25% 0 25%;
 }
 main img {
     height: 72px;
@@ -22,6 +21,7 @@ main img {
     margin: 0;
 }
 .description {
+    min-width: 330px;
     background-color: #741FA2;
     display: flex;
     align-items: center;
@@ -70,6 +70,7 @@ main img {
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 0.5em;
+    min-width: 330px;
 }
 .settingsNav > div {
     background-color: white;
