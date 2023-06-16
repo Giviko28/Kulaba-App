@@ -1,3 +1,6 @@
+* {
+    white-space: nowrap;
+}
 .tags, .user, .searchDiv {
     display: none;
 }
@@ -27,8 +30,8 @@ p a{
     font-size: 14px;
 }
 .login {
-    height: 60vh;
-    width: 35vh;
+    height: max(60vh, 500px);
+    width: max(35vh, 300px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +40,7 @@ p a{
     box-sizing: border-box;
 }
 .login form {
-    height: 50vh;
+    height: max(55vh, 450px);
     width: 86%;
     display: flex;
     flex-direction: column;
@@ -140,12 +143,13 @@ color: rgb(112, 112, 112);
         padding: 8px 32px;
     }
 }
-@media screen and (max-height:820px) {
+@media screen and (max-height:768px) {
     .login {
-        height: 65vh;
+        height: max(65vh, 500px);
+        width: max(35vh, 300px);
     }
     .login form {
-        height: 60vh;
+        height: max(60vh, 450px);
     }
 }
 @media screen and (max-width:1024px){

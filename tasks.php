@@ -5,8 +5,10 @@
 <div class = 'rootdiv'>
 <?php
 if(isset($_SESSION["userid"])){
-
 $userid = $_SESSION["userid"];
+} else {
+    $userid = 1;
+}
 $sql = "SELECT * FROM surveys";
 $stmt = $conn->prepare($sql);
 if ($stmt) {
@@ -58,10 +60,7 @@ if ($stmt) {
 } else {
     die("statement Error");
 }
-} else {
-    header("Location: index.php?error=NotSignedIn");
-    exit();
-}
+
 ?>
 </div>
 </main>

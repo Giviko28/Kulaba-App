@@ -58,8 +58,6 @@
                 <?php
                 if(isset($_SESSION["userid"])){
                 echo "<a id = 'nextPage' href='profile.php'>პროფილი</a>";
-                } else {
-                echo "<a id ='nextPage' href='profile.php'>მთავარი გვერდი</a>";
                 }
                 ?>
                 <a href="index.php">შეთავაზებები</a>

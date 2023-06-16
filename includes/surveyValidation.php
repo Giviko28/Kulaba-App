@@ -4,7 +4,7 @@ include "dbh.inc.php";
 include "functions.inc.php";
 ?>
 <?php
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit"]) && isset($_SESSION["userid"])) {
     $participantId = $_SESSION["userid"];
     $surveyid = $_POST["survey_id"];
     $answers = $_POST["answers"];
@@ -35,7 +35,7 @@ if (isset($_POST["submit"])) {
     header("Location: ../tasks.php?error=none");
     exit();
 } else {
-    header("Location: ../tasks.php?error=surveyNotSubmitted");
+    header("Location: ../tasks.php?error=surveyNotSubmittedOrNotSignedIn");
     exit();
 }
 ?>

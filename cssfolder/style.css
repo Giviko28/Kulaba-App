@@ -11,7 +11,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
-    padding-top: 10vh;
+    padding-top: max(10vh,78px);
     box-sizing: border-box;
 }
 .hidden {
@@ -56,7 +56,7 @@ nav {
 }
 .wrapper {
     display: flex;
-    height: 10vh;
+    height: max(10vh, 78px);
     justify-content: center;
     align-items: center;
     background-color: #741FA2;
