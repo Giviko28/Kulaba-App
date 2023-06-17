@@ -112,14 +112,21 @@ nav {
     left: 0;
     text-decoration: none;
 }
-.wrapper .menuBtn {
+.wrapper .menuBtn, .xBtn {
     position: absolute;
     right: 0;
     display: none;
 }
+.xBtn {
+    right: 10px;
+}
 .wrapper .menuBtn img {
     height: 52px;
     width: 52px;
+}
+.xBtn img {
+    height: 32px;
+    width: 32px;
 }
 footer {
     height: 5vh;
@@ -247,7 +254,7 @@ footer {
     .tags, .userbox {
         display: none;
     }
-    .wrapper .menuBtn {
+    .wrapper .menuBtn, .xBtn {
         display: inline;
     }
     .results {

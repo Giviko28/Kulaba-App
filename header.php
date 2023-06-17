@@ -51,8 +51,7 @@
             ?>
         </div>
             <a class ="menuBtn" id = "menuButton"><img src="images/mnu.jpg"></a>
-        
-        <div id = "menu" class="mobileMenu">
+            <div id = "menu" class="mobileMenu">
             <hr style = "border-color:white; margin-top:1%;">
                 <a id = 'nextPage' href="landingPage.php">მთავარი გვერდი</a>
                 <?php
@@ -152,10 +151,11 @@
         </script>
         <script>
             const menuButton = document.getElementById('menuButton');
+            const xBtn = document.querySelector(".xBtn");
+            let imgElement = menuButton.querySelector("img");
             const menu = document.getElementById('menu');
             const nextPage = document.querySelectorAll("nextPage");
             const checkOut = document.querySelector("#cart");
-            
             checkOut.addEventListener('click', function(){
                 let form = this.closest("form");
                 if(form) {
@@ -166,17 +166,25 @@
             menuButton.addEventListener("click", ()=>{
                 if(menu.style.display === "none"){
                     menu.style.display = "flex";
+                    imgElement.src = "images/mnu2.png"
+                    menuButton.classList.replace("menuBtn", "xBtn");
                 } else {
                     menu.style.display = "none";
+                    imgElement.src = "images/mnu.jpg"
+                    menuButton.classList.replace("xBtn", "menuBtn");
                 }
             });
            window.addEventListener('resize', () =>{
             if(window.innerWidth > 1024){
                 menu.style.display = "none";
+                imgElement.src = "images/mnu.jpg";
+                menuButton.classList.replace("xBtn", "menuBtn");
             }
            })
            window.addEventListener('load', () =>{
                 menu.style.display = "none";
+                imgElement.src = "images/mnu.jpg";
+                menuButton.classList.replace("xBtn", "menuBtn");
            })
 
         </script>
