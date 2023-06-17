@@ -21,6 +21,7 @@
     }
 
 </style>
+<main>
 <?php 
 
 echo '<form action="includes/surveyValidation.php" method = "POST">';
@@ -62,4 +63,5 @@ echo "
 </form>
 ";
 ?>
+</main>
 <?php include "footer.php" ?>

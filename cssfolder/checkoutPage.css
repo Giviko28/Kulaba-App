@@ -4,8 +4,18 @@
 main {
     width: 100%;
     padding: 5vh 40vh;
-    display: flex;
     position: relative;
+}
+.h2 {
+    display: none;
+    color: #2C2F35;
+    font-weight: 700;
+}
+hr {
+    display: none;
+}
+.mobileHeader {
+    display: none;
 }
 .message {
     position: absolute;
@@ -26,16 +36,25 @@ main {
     padding: 0vh 1vh 2vh 1vh;
     overflow-x: hidden;
 }
+.cardwrap {
+    width: 100%;
+    background-color: white;
+}
 .container {
+    background-color: white;
+    padding: 15px 0px 15px 15px;
+    border-radius: 5px;
     position: relative;
     display: flex;
-    height: 10vh;
+    align-items: center;
+    height: 100px;
     width: 100%;
     margin-top: 1vh;
+    
 }
 .container button {
     position: absolute;
-    top: 0.1vh;
+    top: 1vh;
     right: 0.1vh;
     background-color: white;
     border: none;
@@ -48,6 +67,8 @@ main {
     cursor: pointer;
 }
 .container img {
+    height: 75px;
+    width: 75px;
     border-radius: 1.2rem;
     object-fit: cover;
 }
@@ -97,18 +118,127 @@ main {
     }
 }
 @media screen and (max-width: 576px) {
-    .checkout {
+    main {
         display: flex;
         flex-direction: column;
+    }
+    .mobileHeader {
+        display: flex;
+        justify-content: space-between;
+    }
+    .exit img {
+        height: 18px;
+        width: 18px;
+        margin-top: 12px;
+    }
+    .h2 {
+        display: block;
+    }
+    hr {
+        display: block;
+        width: 100%;
+        border: none;
+        height: 1px;
+        background-image: linear-gradient(to right, lightgray, darkgray);
+        margin: 0;
+        margin-top: 18px;
+      }
+    .mobileRight {
+        display: flex;
+    }
+    .mobileRight img {
+        height: 18px;
+        width: 18px;
+        margin-top: 12px;
+        margin-right: 10px;
+    }
+    body {
+        padding: 0;
+    }
+    .cardwrap {
+        width: 100%;
+    }
+    .container img {
+        height: 75px;
+        width: 75px;
+    }
+    .shortDesc {
+        font-size: clamp(0.7rem, 4vw, 1.1rem);
+    }
+    .coinPrice {
+        font-size: clamp(0.8rem, 4vw, 1rem);
+        font-weight: 700;
+        color: #741FA2;
+    }
+    .titles  {
+        padding-left: 10px;
+    }
+    .realPrice {
+        display: none;
+    }
+    nav {
+        display: none;
+    }
+    .checkout {
+        flex-grow: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
     }
     .items {
         width: 100%;
     }
-    .checkout {
+    #realDiv, #saleDiv {
+        display: none;
+    }
+    #totalDiv {
+        margin-top: 20px;
+        border-radius: 6px;
+        align-items: center;
+        padding: 0% 4%;
+        margin-bottom:25px;
+        background-color: white;
+    } 
+    #totalLabel {
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+    #total {
+        font-weight: 700;
+        color: #741FA2;
+    }
+    #savedDiv {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
         align-items: center;
     }
+    #savedLabel {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-right: 10px;
+    }
+    #saved {
+        color: #741FA2;
+        font-weight: 700;
+    }
     .price {
-        margin-top: 2%;
-        width: 70%;
+        background-color: transparent;
+        height: auto;
+        width: 100%;
+    }
+    .price .btn button {
+        width: 100%;
+        height: 45px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 24px;
+        margin-bottom: 5px;
+    }
+    footer {
+        display: none;
     }
 }

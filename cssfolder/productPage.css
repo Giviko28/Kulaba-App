@@ -113,7 +113,7 @@ main {
         display: none;
     }
     main {
-        padding: 4vh 2vh 0vh;
+        padding: 4vh 2vh 10vh;
     }
     .left, .right {
         width: 100%;
