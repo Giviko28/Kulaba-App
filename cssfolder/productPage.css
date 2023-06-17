@@ -109,6 +109,9 @@ main {
     }
 }
 @media screen and (max-width:576px){
+    .imgSideBar {
+        display: none;
+    }
     main {
         padding: 4vh 2vh 0vh;
     }
@@ -118,4 +121,5 @@ main {
     body {
         min-height: 110vh;
     }
+
 }
