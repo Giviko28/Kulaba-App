@@ -60,7 +60,6 @@
         </div>
         </form>
     </section>
-    
     <section class="items">
 <?php
     $arr = array();

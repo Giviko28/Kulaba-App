@@ -87,8 +87,8 @@ main {
 
 }
 .card {
-  height: 320px;
-  width: 200px;
+  height: 360px;
+  min-width: 200px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -104,7 +104,8 @@ main {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 .card img {
-  min-height: 20vh;
+  height: 20vh;
+  max-height: 190px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -169,13 +170,22 @@ hr {
   color:#741FA2;
   font-size: 15px;
 }
-
+@media screen and (min-width:1024px){
+  .card img {
+    height: 20vh;
+    max-height: 190px;
+  }
+}
 @media screen and (max-width:768px){
   main {
     padding: 1% 3%;
   }
 }
 @media screen and (max-width:576px){
+  .card img {
+    max-height: none;
+    height: 60%;
+  }
   .filterTitle .srch {
     width: 150px;
     text-align: center;

@@ -129,6 +129,9 @@ nav {
     width: 32px;
 }
 footer {
+    background-color: #741FA2;
+    color: white;
+    font-weight: 700;
     height: 5vh;
     display: flex;
     justify-content: center;
