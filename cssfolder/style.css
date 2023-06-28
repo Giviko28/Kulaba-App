@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F7F7F7;
+    background-color: #fcfcfc;
     padding-top: max(10vh,78px);
     box-sizing: border-box;
 }

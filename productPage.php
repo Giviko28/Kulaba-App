@@ -4,6 +4,10 @@
 if (isset($_GET["cardId"])) {
     $id = $_GET["cardId"];
     $card = getCardById($conn, $id);
+    if($card === NULL){
+        echo '<meta http-equiv="refresh" content="0;url=landingPage.php">';
+        exit;
+    }
     $img = $card["image"];
     $desc = $card["shortDesc"];
     $name = $card["restaurantName"];

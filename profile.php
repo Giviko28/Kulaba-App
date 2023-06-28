@@ -43,7 +43,7 @@ $_SESSION["saved"] = $savings[0] - $savings[1];
             </div>
             <div>
                 <div><img src="images/Screenshot_44.png" alt=""></div>
-                <a href="includes/logout.inc.php">პროფილი ></a>
+                <a href="profileDetails.php">პროფილი ></a>
                 <p>ჩაასწორე ან იხილე შენი პროფილი</p>
             </div>
             <div>

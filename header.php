@@ -13,8 +13,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="cssfolder/style.css">
+    <style>
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff; /* Set your desired background color */
+            opacity: 1; /* Set the desired opacity */
+            z-index: 9999; /* Ensure the overlay appears on top */
+            display: flex;
+            justify-content:center;
+            align-items:center;
+            transition: opacity 0.5s ease;
+        }
+        #loading {
+            height: 100px;
+            width:100px;
+        }
+        
+    </style>
 </head>
 <body>
+    <div id="loading-overlay"><img id="loading" src="images/loading.gif" alt="Loading icon"></div>
     <div class = "results" id="results"></div>
     <?php
     $cart ="
@@ -187,4 +209,14 @@
                 menuButton.classList.replace("xBtn", "menuBtn");
            })
 
+        </script>
+        <script>
+            window.addEventListener('load', function() {
+                var overlay = document.getElementById('loading-overlay');
+                overlay.style.opacity = 0; // Set opacity to 0 to hide the overlay
+                overlay.style.pointerEvents = 'none'; // Allow interaction with the content
+                setTimeout(function() {
+                    overlay.style.display = 'none'; // Hide the overlay after the transition
+                }, 500);
+         });
         </script>

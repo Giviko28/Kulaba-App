@@ -68,3 +68,39 @@ class UserController {
         
     }
 }
+
+class RateLimiter {
+    private $ip;
+    private $timeWindow;
+    private $db;
+
+    public function __construct($ip, $timeWindow, $db){
+        $this->ip = $ip;
+        $this->timeWindow = $timeWindow;
+        $this->db = $db;
+    }
+    public function insertRequest(){
+        $stmt = $this->db->prepare("INSERT INTO requests (ip, request_time) VALUES (?,?)");
+        $stmt->bind_param("si", $this->ip, time());
+        $stmt->execute();
+    }
+    public function deleteOldRequest($timeWindow){
+        $stmt = $this->db->prepare("DELETE FROM requests WHERE ip = ? AND request_time <= ?");
+        $stmt->bind_param("si", $this->ip, $timeWindow);
+        $stmt->execute();
+    }
+    public function getRequestCount($ip, $startTime){
+        $stmt = $this->db->prepare("SELECT * FROM requests WHERE ip = ? AND request_time >= ?");
+        $stmt->bind_param("si", $ip, $startTime);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows;
+    }
+    public function hasExceededRate($limit){
+        $startTime = time() - $this->timeWindow;
+        $this->insertRequest();
+        $this->deleteOldRequest($startTime);
+        $requestCount = $this->getRequestCount($this->ip, $startTime);
+        return $requestCount>$limit;
+    }
+}

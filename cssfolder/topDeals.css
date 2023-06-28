@@ -118,7 +118,7 @@ main {
 .card img:hover {
   transform: scale(1.02);
 }
-.card .title {
+.title {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
@@ -127,7 +127,7 @@ main {
   white-space: nowrap;
   color:#333333;
 }
-.card .desc {
+.desc {
   margin: 0;
   padding: 1vh;
   font-size: 11px;
@@ -155,13 +155,13 @@ hr {
   align-items: center;
   justify-content: center;
 }
-.salesDiv .realPrice {
+.realPrice {
   font-size: 14px;
   margin-left:1vh;
   text-decoration: line-through;
   color: #777E90;
 }
-.salesDiv .salePrice {
+.salePrice {
   font-size: 18px;
   color:#333333;
 }
@@ -184,7 +184,7 @@ hr {
 @media screen and (max-width:576px){
   .card img {
     max-height: none;
-    height: 60%;
+    height: 55%;
   }
   .filterTitle .srch {
     width: 150px;
@@ -237,7 +237,23 @@ hr {
   }
   .card {
     width: 80%;
-    height: 380px;
+    height: 580px;
     margin-left: 10%;
   }
+  .title {
+    font-size: 24px;
+  }
+  .desc {
+    font-size: 19px;
+  }
+  .salePrice {
+    font-size: 26px;
+  }
+  .realPrice {
+    font-size: 22px;
+  }
+  .cost {
+    font-size: 23px;
+  }
+
 }

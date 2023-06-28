@@ -66,6 +66,7 @@ main {
     background-color: white;
     border-radius: 12px;
     transition-duration: 0.4s;
+    border:0 solid #e5e7eb;
 }
 .categories .category:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);

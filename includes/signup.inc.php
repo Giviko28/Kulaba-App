@@ -5,19 +5,21 @@ require_once "../models/user.php";
 require_once "../repositories/UserRepository.php";
 require_once "../controllers/userController.php";
 if(isset($_POST["submit"])){
-    
+    $limiter = new RateLimiter($_SERVER["REMOTE_ADDR"],120, $conn);
+    if($limiter->hasExceededRate(3)){
+        header("Location: ../signup.php");
+        exit();
+    }
     $userRepository = new UserRepository($conn);
     $userController = new UserController($userRepository);
     if($userController->CreateUser()){
-        echo "რეგისტრაცია წარმატებით დასრულდა";
         header("Location: ../login.php");
     } else {
-        echo "შეცდომა";
-        header("Location: ../login.php");
+        header("Location: ../signup.php");
     }
     exit();
 } else {
-    echo "Wrong way";
+    header("Location: ../login.php");
     exit();
 }
 

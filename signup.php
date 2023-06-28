@@ -1,4 +1,4 @@
-<?php include "header.php" ?>
+<?php include "header.php";?>
 <img src="images/signup.png" alt="" class="backGround">
 <link rel="stylesheet" href="cssfolder/signup.css">
     <main>
