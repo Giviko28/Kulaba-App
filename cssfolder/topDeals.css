@@ -89,6 +89,7 @@ main {
 .card {
   height: 360px;
   min-width: 200px;
+  width: 200px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -104,7 +105,7 @@ main {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 .card img {
-  height: 20vh;
+  height: 50%;
   max-height: 190px;
   width: 100%;
   padding: 0;
@@ -169,12 +170,6 @@ hr {
   margin: 0;
   color:#741FA2;
   font-size: 15px;
-}
-@media screen and (min-width:1024px){
-  .card img {
-    height: 20vh;
-    max-height: 190px;
-  }
 }
 @media screen and (max-width:768px){
   main {

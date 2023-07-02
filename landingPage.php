@@ -1,4 +1,4 @@
-<?php require "header.php"?>
+<?php require "header.php"; ?>
 <link rel="stylesheet" href="cssfolder/landingPage.css">
 
 <main>

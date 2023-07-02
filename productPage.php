@@ -8,7 +8,14 @@ if (isset($_GET["cardId"])) {
         echo '<meta http-equiv="refresh" content="0;url=landingPage.php">';
         exit;
     }
-    $img = $card["image"];
+    ///////////////////////////////
+    $stmt = $conn->prepare("SELECT * FROM card_images
+    WHERE card_id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    for ($set = array (); $row = $result->fetch_assoc(); $set[] = $row);
+    ////////////////////////////////
     $desc = $card["shortDesc"];
     $name = $card["restaurantName"];
     $realPrice = "GEL".$card["real_price"]." ₾";
@@ -18,16 +25,14 @@ if (isset($_GET["cardId"])) {
     <main>
     <div class ="left">
         <div class = "slideshow">
-            <div class ="imgSideBar">
-            <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+            <div class ="imgSideBar">';
+                for($i = 0; $i<count($set);$i++){
+                echo '<img  id ="img'. $i .'" onclick="updateImg('.$i.')"  src="images/'. $set[$i]["image"] .'" alt="Item Image">';
+                }
+            echo '
             </div>
             <div class = "mainImg">
-                <img src="data:image/jpeg;base64,' . base64_encode($img) . '" alt="Item Image">
+                <img  id = "mainImg" src="images/' . $set[0]["image"] . '" alt="Item Image">
             </div>
         </div>
     </div>
@@ -77,6 +82,7 @@ if (isset($_GET["cardId"])) {
         xhttp.send();
     }
     </script>
+    <script src="includes/productPage.js"></script>
         ';
 } else {
     header("Location: landingPage.php");

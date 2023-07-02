@@ -16,17 +16,20 @@
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $result = $stmt->get_result();
-
                 while($row = $result->fetch_assoc()) {
                     $img = $row["image"];
                     $name = $row["restaurantName"];
                     $desc = $row["shortDesc"];
                     $price = $row["price"];
                     $cardId = $row["id"];
+
+                    //////////ImageFetching///////
+                    $imgName = getCardFirstImage($cardId);
+                    //////////////////////////////
                     echo "
                 <form action='includes/deletecard.php' method='POST'>
                     <div class = 'card'>
-                    <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
+                    <img src='images/". $imgName ."' alt='Item Image'>
                     <p class ='title'>$name</p>
                     <p class ='desc'>$desc</p>
                     <hr>
@@ -60,8 +63,11 @@
                         <option value=2>პიცა</option>
                         <option value=3>რესტორანი</option>
                     </select>
-                    <input type="file" name="img" >
-        
+                    <input type="file" name="image[]">
+                    <input type="file" name="image[]">
+                    <input type="file" name="image[]">
+                    <input type="file" name="image[]">
+                    <input type="file" name="image[]">
                     <button class ="submit" name = "submit" type="submit">ატვირთვა</button>
                 </form>
                 ';

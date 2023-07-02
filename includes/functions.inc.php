@@ -159,19 +159,35 @@ function getRecentCards($conn) {
         die("Statement failure");
     }
 }
+function getCardFirstImage($cardId) {
+    global $conn;
+    $imageStmt = $conn->prepare("SELECT * FROM card_images 
+        WHERE card_id = ?");
+        $imageStmt->bind_param("i", $cardId);
+        $imageStmt->execute();
+        $imageResult = $imageStmt->get_result();
+        while($imageRow = $imageResult->fetch_assoc()){
+            $imgName = $imageRow["image"];
+            break;
+            // Only get's the first image to display on the main page
+        }
+        return $imgName;
+}
 function printCards($amount, $cards) {
+    global $conn;
     while (($row = $cards->fetch_assoc()) && ($amount !== 0)){
-        $img = $row["image"];
         $name = $row["restaurantName"];
         $desc = $row["shortDesc"];
         $price = $row["price"];
         $cardId = $row["id"];
         $realPrice = $row["real_price"]."₾";
         $salesPrice = $row["sales_price"]."₾";
-        
+        ///NewImageFetching///////////////////////////////
+        $imgName = getCardFirstImage($cardId);
+        //////////////////////////////////////////////////
         echo "
         <form class = 'card' action = 'productPage.php' method = 'GET'>
-        <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
+        <img src='images/" . $imgName . "' alt='Item Image'>
         <p class ='title'>$name</p>
         <p class ='desc'>$desc</p>
         <hr>
@@ -190,6 +206,7 @@ function printCards($amount, $cards) {
         </form>
         ";
         $amount--;
+        unset($imgName);
     }
 }
 function getCardById($conn, $id) {

@@ -3,11 +3,11 @@
 }
 main {
     width: 100%;
-    padding: 4vh 40vh 0vh;
+    padding: 4vh 25vh 0vh;
     display: flex;
 }
 .left {
-    width: 60%;
+    width: 70%;
 }
 .slideshow {
     height: 60vh;
@@ -16,13 +16,13 @@ main {
 }
 .imgSideBar {
     height: 100%;
-    width: 10vh;
+    width: 20vh;
     overflow: hidden;
 }
 .imgSideBar img {
-    height: 10vh;
-    width: 10vh;
-    object-fit: contain;
+    height: 20%;
+    width: 100%;
+    cursor: pointer;
 }
 .mainImg {
     height: 100%;
@@ -94,12 +94,12 @@ main {
     color: #222222;
     font-weight: 700;
 }
-@media (max-width:1200px) {
+@media (max-width:1024px) {
     main {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 4vh 10vh 0vh;
+        padding: 0vh;
     }
     .left, .right {
         width: 85%;

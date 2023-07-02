@@ -72,15 +72,15 @@
 
     while ($row = $result->fetch_assoc()) {
         $cardId = $row["id"];
-        $img = $row["image"];
         $name = $row["restaurantName"];
         $desc = $row["shortDesc"];
         $price = $row["price"];
         $sales_price = $row["sales_price"];
         $real_price = $row["real_price"];
+        $imgName = getCardFirstImage(($cardId));
         echo "
         <form class = 'card' action = 'productPage.php' method = 'GET'>
-        <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
+        <img src='images/" . $imgName . "' alt='Item Image'>
         <p class ='title'>$name</p>
         <p class ='desc'>$desc</p>
         <hr>

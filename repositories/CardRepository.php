@@ -25,6 +25,7 @@ class CardRepository {
         }
     }
     public function getByDescription($description){
+        include "../includes/functions.inc.php";
         try {
             $stmt = $this->db->prepare("SELECT * FROM cards WHERE shortDesc LIKE CONCAT('%', ?, '%')");
             $stmt->bind_param("s", $description);
@@ -32,9 +33,10 @@ class CardRepository {
             $result = $stmt->get_result();
             $cards = [];
             while($row = $result->fetch_assoc()){
+                $imgName = getCardFirstImage($row["id"]);
                 $card = array(
                     "id" => $row["id"],
-                    "image" => base64_encode($row["image"]),
+                    "image" => $imgName,
                     "restaurantName" => $row["restaurantName"],
                     "shortDesc" => $row["shortDesc"],
                     "price" => $row["price"],
@@ -77,17 +79,33 @@ class CardRepository {
             exit();
         }
     }
+    public function isImageNameSafe($filename): bool {
+        if (!preg_match("`^[-0-9A-Z_\.]+$`i", $filename)) {
+            return false;
+        }
+        if (strlen($filename) > 250) {
+            return false;
+        }
+        return true;
+    }
+    public function uploadImagePath($card_id, $path) {
+        $stmt = $this->db->prepare("INSERT INTO card_images(card_id, image)
+        VALUES (?, ?)");
+        $stmt->bind_param("is", $card_id, $path);
+        $stmt->execute();
+    }
     public function save(Card $card) {
-        $sql = "INSERT INTO cards (image, restaurantName, shortDesc, price, usersid, category_id, real_price, sales_price)
-        VALUES (?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO cards (restaurantName, shortDesc, price, usersid, category_id, real_price, sales_price)
+        VALUES (?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($sql);
         if($stmt){
-            $stmt->bind_param("sssiiiii",$card->getImage(), $card->getRestaurantName(), $card->getShortDesc(), $card->getPrice(), $card->getUsersId(), $card->getCategoryId(), $card->getRealPrice(), $card->getSalesPrice());
+            $stmt->bind_param("ssiiiii",$card->getRestaurantName(), $card->getShortDesc(), $card->getPrice(), $card->getUsersId(), $card->getCategoryId(), $card->getRealPrice(), $card->getSalesPrice());
             $stmt->execute();
         } else {
             die("Statement error");
             exit();
         }
+        return $this->db->insert_id;
     }
     public function delete(Card $card) {
         $sql = "SELECT * FROM cards WHERE id = ?";

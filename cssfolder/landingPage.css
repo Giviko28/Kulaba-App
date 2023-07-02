@@ -121,6 +121,7 @@ main {
 }
 .card {
     height: 320px;
+    width: 200px;
     min-width: 200px;
     box-sizing: border-box;
     display: flex;

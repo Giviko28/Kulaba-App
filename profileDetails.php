@@ -1,9 +1,14 @@
-<?php require "header.php"; ?>
+<?php 
+    require "header.php";
+    if (!isset($_SESSION["userid"])) {
+        exit();
+    }
+?>
 <link rel="stylesheet" href="cssfolder/profileDetails.css">
 
 
 <main id ="main">
-    <p>< Account</p>
+    <a href="profile.php">< Account</a>
     <h1>პროფილი</h1>
     <div class ="parentDiv first">
         <div class ="titles">{{ username }}</div>
@@ -25,7 +30,7 @@
         </div>
         <div class ='submitChanges'>
         <input v-model="name" v-if="toggleUser" type="text">
-        <button v-on:click="toggleUser=!toggleUser" v-if="toggleUser">შენახვა</button>
+        <button v-on:click="updateUserData('toggleUser')" v-on:click="toggleUser=!toggleUser" v-if="toggleUser">შენახვა</button>
         </div>
     </div>
     <hr>
@@ -41,7 +46,7 @@
         </div>
         <div class ='submitChanges'>
             <input v-model="email" v-if="toggleEmail" type="text">
-            <button v-on:click="toggleEmail=!toggleEmail" v-if="toggleEmail">შენახვა</button>
+            <button v-on:click ="updateUserData('toggleEmail')" v-on:click="toggleEmail=!toggleEmail" v-if="toggleEmail">შენახვა</button>
         </div>
     </div>
     <hr>
@@ -57,7 +62,7 @@
         </div>
         <div class ='submitChanges'>
             <input v-model="username" v-if="toggleUsername" type="text">
-            <button v-on:click="toggleUsername=!toggleUsername" v-if="toggleUsername">შენახვა</button>
+            <button v-on:click ="updateUserData('toggleUsername')" v-if="toggleUsername">შენახვა</button>
         </div>
     </div>
     <hr>
@@ -77,12 +82,14 @@ const app = Vue.createApp({
             toggleUsername: false
         }
     },
-    created() {
+    mounted() {
     this.fetchSessionData();
     },
     methods: {
         fetchSessionData() {
-            axios.get('includes/vueProfileData/session.inc.php')
+            axios.get('includes/vueProfileData/session.inc.php', {
+                cache: false
+                })
                 .then(response => {
                     const sessionData = response.data;
                     this.name = sessionData.username;
@@ -92,6 +99,35 @@ const app = Vue.createApp({
                 .catch(error => {
                     console.error(error);
                 })
+        },
+        updateUserData(toggleData) {
+            const requestData = {
+                name: this.name,
+                email: this.email,
+                username: this.username
+            }
+            axios.post('includes/vueProfileData/updateUserData.php', requestData)
+            .then(response => {
+            console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+            switch(toggleData) {
+                case 'toggleUsername':
+                    this.toggleUsername = !this.toggleUsername;
+                    break;
+                case 'toggleUser':
+                    this.toggleUser = !this.toggleUser;
+                    break;
+                case 'toggleEmail':
+                    this.toggleEmail = !this.toggleEmail;
+                default:
+                    break;
+            }
+
+            this.fetchSessionData();
         }
     }
 })

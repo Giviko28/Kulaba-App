@@ -14,7 +14,6 @@ if (isset($_SESSION["cart"])) {
     } else {
         for ($i = 0; $i < count($arr); $i++) {
             $card = getCardById($conn, $arr[$i]);
-            $img = $card["image"];
             $shortDesc = $card["shortDesc"];
             $coinPrice = $card["price"];
             $realPrice = $card["real_price"];
@@ -22,9 +21,10 @@ if (isset($_SESSION["cart"])) {
             $totalCoinPrice += $coinPrice;
             $totalSalesPrice += $salesPrice;
             $totalRealPrice += $realPrice;
+            $imgName = getCardFirstImage($arr[$i]);
             $cards .= "
             <div id='$arr[$i]' class='container $arr[$i]'>
-                <img src='data:image/jpeg;base64," . base64_encode($img) . "' alt='Item Image'>
+                <img src='images/" . $imgName . "' alt='Item Image'>
                 <div class='titles'>
                     <p class = 'shortDesc'>$shortDesc</p>
                     <p class ='coinPrice'>J$coinPrice</p>

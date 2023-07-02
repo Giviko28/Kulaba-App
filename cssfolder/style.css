@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
 }
+@font-face {
+    font-family: "GeorgianFont";
+    src: url('../includes/bpg_glaho.ttf') format('truetype');
+}
+
 main {
     flex: 1;
 }

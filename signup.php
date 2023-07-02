@@ -48,5 +48,5 @@
         </div>
 
     </main>
-    <script src="includes/signupAndLogin.js"></script>
+    <script src="includes/signupandLogin.js"></script>
 <?php include "footer.php" ?>

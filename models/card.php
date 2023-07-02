@@ -12,8 +12,7 @@ class Card {
     private $real_price;
     private $sales_price;
 
-    public function __construct($image, $restaurantName, $shortDesc, $price, $usersid, $categoryid,$real_price, $sales_price) {
-        $this->image = $image;
+    public function __construct($restaurantName, $shortDesc, $price, $usersid, $categoryid,$real_price, $sales_price) {
         $this->restaurantName = $restaurantName;
         $this->shortDesc = $shortDesc;
         $this->price = $price;

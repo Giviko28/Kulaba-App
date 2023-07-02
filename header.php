@@ -120,7 +120,7 @@
                             });
 
                             const img = document.createElement("img");
-                            img.src = "data:image/png;base64," + card.image;
+                            img.src = "images/" + card.image;
                             link.appendChild(img);
 
                             const nameParagraph = document.createElement("p");

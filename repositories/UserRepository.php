@@ -78,6 +78,16 @@ class UserRepository {
             return false;
         }
     }
+    public function updateUserData($name, $email, $username, $id){
+        $stmt = $this->db->prepare("UPDATE users SET usersName=?, usersEmail=?, usersUid=? WHERE usersId=?");
+        $stmt->bind_param("sssi", $name, $email, $username, $id);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) {
+            return "Data updated successfully.";
+        } else {
+            return  "No rows were updated.";
+        }
+    }
     public function save(User $user) {
         $stmt = $this->db->prepare("INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, coins)
         VALUES (?,?,?,?,?)");

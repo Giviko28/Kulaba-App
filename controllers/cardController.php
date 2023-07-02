@@ -8,8 +8,6 @@ class CardController {
     }
     
     public function createCard() {
-
-        $image = file_get_contents($_FILES["img"]["tmp_name"]);
         $restaurantName = $_POST["name"];
         $shortDesc = $_POST["desc"];
         $price = $_POST["price"];
@@ -17,9 +15,61 @@ class CardController {
         $category_id = $_POST["category_id"];
         $real_price = $_POST["realprice"];
         $sales_price = $_POST["salesprice"];
+        
+        $images = 0;
+        $imageNames = [];
+        $allowedExtentions = ["image/jpeg", "image/jpg", "image/png"];
+        $uploadDir = "C:/Users/Giviko/procedural/images/";
 
-        // Error handlers უსაფრთხოება.
-        $errors = [];
+        if (!is_array($_FILES["image"]["name"]) || !isset($_POST["submit"])) {
+            return;
+        }
+
+        foreach($_FILES["image"]["name"] as $key => $name) {
+            $errors = [];
+            if (!is_uploaded_file($_FILES["image"]["tmp_name"][$key])) {
+                continue;
+            }
+            $mimeType = mime_content_type($_FILES["image"]["tmp_name"][$key]);
+
+            if(!in_array($mimeType, $allowedExtentions, true)){
+                $errors[] = "Invalid extension";          
+            }
+            if ($_FILES["image"]["error"][$key] == 4) {
+                $errors[] = "Error within image";
+            }
+            if ($_FILES["image"]["size"][$key]/1024 > 512) {
+                $errors[] = "Image too big";
+            }
+            if (!$this->cardRepository->isImageNameSafe($name)) {
+                $errors[] = "Wrong image name";
+            }
+
+            if (!empty($errors)) {
+                echo json_encode($errors);
+                exit();
+            }
+
+            if (move_uploaded_file($_FILES["image"]["tmp_name"][$key], $uploadDir . $name)) {
+                $images++;
+                $imageNames[] = $name;
+                // $this->cardRepository->uploadImagePath($lastId, $name);
+            } else {
+                exit();
+            }
+        }
+        if ($images > 0 && $images < 6) {
+            $card = new Card($restaurantName, $shortDesc, $price, $usersid, $category_id, $real_price, $sales_price);
+            $lastId = $this->cardRepository->save($card);
+            foreach($imageNames as $imageName) {
+                $this->cardRepository->uploadImagePath($lastId, $imageName);
+            }
+        } else {
+            exit();
+        }
+
+        
+        /*
         $imageInfo = getimagesize($_FILES["img"]["tmp_name"]);
         if($imageInfo !== false){
             $imageType = $imageInfo[2];
@@ -31,13 +81,6 @@ class CardController {
                 $errors[] = "Img must be a JPEG";
             }
         }
-        if(!empty($errors)){
-            echo json_encode($errors);
-            return;
-        }
-
-        $card = new Card($image, $restaurantName, $shortDesc, $price, $usersid, $category_id, $real_price, $sales_price);
-    
-        $this->cardRepository->save($card);
+        */
     }
 }

@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding-top: 2vh;
+    flex-grow: 1;
   }
   .items form {
     display: flex;
