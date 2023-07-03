@@ -4,6 +4,10 @@ Given code is raw html/css/php which will soon be updated.
 There is no provided SQL file which you can import in phpMyAdmin ( I will also upload this file in the upcoming future )
 
 ## How to start Kulaba?
+
+
+UPDATE : https://kulaba.000webhostapp.com/landingPage.php
+The website is now hosted. make sure to ignore the security warnings as i don't have an SSL Certificate
 If your here you probably know what a XAMPP server is. Open it and run Apache + MySql.
 Go to phpMyAdmin and after clicking import, upload the .sql file.
 As i'm running multiple sessions on my computer, i've changed the default port settings of 3306 to 3307. If you haven't modified your port settings in mySQL, open the dbh.inc.php file in the includes folder.
