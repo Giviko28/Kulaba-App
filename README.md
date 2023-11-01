@@ -1,6 +1,6 @@
 # English
 
-Given code is raw html/css/php which will soon be updated.
+Given code is raw html/css/php/js
 There is no provided SQL file which you can import in phpMyAdmin ( I will also upload this file in the upcoming future )
 
 ## How to start Kulaba?
