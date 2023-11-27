@@ -1,7 +1,7 @@
 # English
 
 Given code is raw html/css/php/js
-There is no provided SQL file which you can import in phpMyAdmin ( I will also upload this file in the upcoming future )
+I provided an SQL file which you can import in phpMyAdmin ( I will also update this file in the upcoming future )
 
 ## How to start Kulaba?
 
